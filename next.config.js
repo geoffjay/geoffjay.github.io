@@ -11,7 +11,7 @@ const nextConfig = {
   assetPrefix: isProd ? "https://geoffjay.github.io/" : "",
   images: {
     loader: "imgix",
-    path: "",
+    path: "https://geoffjay.github.io/",
   },
 };
 
