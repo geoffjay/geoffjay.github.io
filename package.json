@@ -1,21 +1,28 @@
 {
-  "name": "app",
-  "private": true,
+  "name": "geoffjay.github.io",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts:check": "tsc",
+    "fmt:prettier": "prettier --write .",
+    "blog:post:new": "./scripts/blog -c"
   },
   "dependencies": {
     "next": "12.0.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "remark": "^14.0.1",
+    "remark-html": "^15.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.34",
     "eslint": "7",
     "eslint-config-next": "12.0.3",
+    "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   }
 }
