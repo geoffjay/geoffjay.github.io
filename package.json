@@ -1,10 +1,11 @@
 {
   "name": "geoffjay.github.io",
   "private": false,
-  "license": "MIT",
+  "license": "GPLv2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "ts:check": "tsc",
