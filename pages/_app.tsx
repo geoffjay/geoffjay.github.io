@@ -1,8 +1,14 @@
 import { AppProps } from "next/app";
-import "../styles/globals.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
-function GithubSite({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+import "@/styles/globals.css";
+
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <ChakraProvider>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  );
 }
 
-export default GithubSite;
+export default App;

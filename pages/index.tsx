@@ -1,11 +1,23 @@
 import Head from "next/head";
 import Image from "next/image";
 
-import styles from "../styles/Home.module.css";
+import Layout from "@/components/layout";
 
-export default function Home() {
+import { getAllPosts } from "@/lib/api";
+import Post from "@/types/post";
+
+import styles from "@/styles/Home.module.css";
+
+type Props = {
+  allPosts: Post[]
+};
+
+const Index = ({ allPosts }: Props) => {
+  const heroPost = allPosts[0];
+  const morePosts = allPosts.slice(1);
+
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>geoffjay.github.io</title>
         <meta name="description" content="GitHub pages for geoffjay" />
@@ -28,6 +40,23 @@ export default function Home() {
           </span>
         </a>
       </footer>
-    </div>
+    </Layout>
   );
 }
+
+export default Index;
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "excerpt",
+  ]);
+
+  return {
+    props: { allPosts },
+  };
+};
