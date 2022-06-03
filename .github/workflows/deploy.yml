@@ -32,12 +32,11 @@ jobs:
           command: install
           args: trunk
 
-      # - name: Install Trunk
-      #   uses: mbround18/trunk-rs@v0.0.1
-
       - name: Build
         run: |
           trunk build --release
+        env:
+          BONNIE_CONF: Bonnie.toml
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

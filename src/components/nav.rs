@@ -20,7 +20,7 @@ pub fn nav() -> Html {
     html! {
         <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <h1 class="navbar-item is-size-3">{ "Boxo" }</h1>
+                <h1 class="navbar-item is-size-3">{ "Geoff Johnson" }</h1>
                 <button
                     class={classes!("navbar-burger", "burger", active_class)}
                     aria-label="menu" aria-expanded="false"

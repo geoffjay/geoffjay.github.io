@@ -5,36 +5,30 @@ pub fn home() -> Html {
     html! {
         <div class="container">
             <div class="notification is-primary">
-                <h1 class="title">{"Yew Parcel Template"}</h1>
+                <h1 class="title">{"Portfolio"}</h1>
             </div>
             <div class="notification is-secondary">
-                <h2 class="subtitle">{"Libraries used in this template"}</h2>
+                <h2 class="subtitle">{"Built using"}</h2>
             </div>
             <section class="section">
                 <ul>
                     <li>
+                        <a href="https://rust-lang.org" target="_blank">
+                            {"rust.org"}
+                        </a>
+                        {" : Rust language"}
+                    </li>
+                    <li>
                         <a href="https://yew.rs" target="_blank">
                             {"yew.rs"}
                         </a>
-                        {" : rustwasm frontent framwork"}
+                        {" : Rust WASM frontend framework"}
                     </li>
                     <li>
-                        <a href="https://github.com/spielrs/yew_styles" target="_blank">
-                            {"yew_styles"}
+                        <a href="https://tailwindcss.com" target="_blank">
+                            {"tailwindcss.com"}
                         </a>
-                        {" : styles framework for yew"}
-                    </li>
-                    <li>
-                        <a href="https://parceljs.org/" target="_blank">
-                            {"parceljs"}
-                        </a>
-                        {" : builder js library"}
-                    </li>
-                    <li>
-                        <a href="https://github.com/paulmillr/chokidar" target="_blank">
-                            {"chokidar"}
-                        </a>
-                        {" : watcher js library"}
+                        {" : Tailwind CSS framework"}
                     </li>
                 </ul>
             </section>
