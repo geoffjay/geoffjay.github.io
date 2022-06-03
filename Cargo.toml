@@ -1,0 +1,10 @@
+[package]
+name = "geoffjay-github-io"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+log = "0.4"
+wasm-logger = "0.2"
+yew = "0.19.3"
+yew-router = "0.16"
