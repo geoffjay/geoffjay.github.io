@@ -1,0 +1,12 @@
+[build]
+target = "index.html"
+dist = "dist"
+public_url = "/"
+
+[serve]
+port = 8888
+
+[[hooks]]
+stage = "pre_build"
+command = "bonnie"
+command_arguments = ["build-tailwind-dev"]

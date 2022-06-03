@@ -1,0 +1,3 @@
+[submodule "tools/tailwind-yew-builder"]
+	path = tools/tailwind-yew-builder
+	url = https://github.com/matiu2/tailwind-yew-builder.git
