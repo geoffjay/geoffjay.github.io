@@ -12,7 +12,7 @@ ignore = [
   "README.md",
   "LICENSE.md",
   "rustfmt.toml",
-  "tools/tailwind-yew-builder/output/tailwind.css"
+  "tools/tailwind-yew-builder/"
 ]
 
 [[hooks]]
