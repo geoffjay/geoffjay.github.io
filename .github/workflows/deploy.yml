@@ -34,11 +34,7 @@ jobs:
 
       - name: Build
         run: |
-          pwd
-          cp Bonnie.toml bonnie.toml
           trunk build --release
-        env:
-          BONNIE_CONF: Bonnie.toml
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

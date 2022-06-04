@@ -6,6 +6,15 @@ public_url = "/"
 [serve]
 port = 8888
 
+[watch]
+ignore = [
+  ".editorconfig",
+  "README.md",
+  "LICENSE.md",
+  "rustfmt.toml",
+  "tools/tailwind-yew-builder/output/tailwind.css"
+]
+
 [[hooks]]
 stage = "pre_build"
 command = "bonnie"

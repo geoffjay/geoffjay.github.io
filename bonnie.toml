@@ -4,8 +4,7 @@ version="0.3.2"
 ## Builds Tailwind CSS for development (no purging)
 build-tailwind-dev = [
     "cd tools/tailwind-yew-builder",
-    "INPUT=../../config/ SOURCE_CODE=../../ docker compose up dev",
-    "cp output/tailwind.css ../../public/styles/tailwind.css"
+    "INPUT=../../config/ SOURCE_CODE=../../ docker compose up dev"
 ]
 
 ## Builds Tailwind CSS for production (maximum purging and minification)
