@@ -56,6 +56,7 @@ jobs:
         run: |
           BONNIE_FILE=bonnie-linux-amd64
           curl -L "$BONNIE_LINK/$BONNIE_VERSION/$BONNIE_FILE" -o $BONNIE_FILE
+          chmod +x $BONNIE_FILE
           mv -f $BONNIE_FILE $HOME/.local/bin/bonnie
 
       - name: Install Rust
