@@ -10,11 +10,11 @@ port = 8888
 ignore = [
   ".editorconfig",
   ".git/",
-  ".github/"
+  ".github/",
   "README.md",
   "LICENSE.md",
   "rustfmt.toml",
-  "tools/tailwind-yew-builder/"
+  "tools/tailwind-yew-builder/",
 ]
 
 [[hooks]]
