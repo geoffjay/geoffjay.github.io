@@ -23,7 +23,7 @@ pub fn app() -> Html {
         <BrowserRouter>
             <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
                 <Nav />
-                <div class="flex flex-col w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
+                <div class="flex flex-col w-full text-gray-700 bg-gray-100 dark-mode:text-gray-200 dark-mode:bg-gray-700 flex-shrink-0">
                     <main>
                         <Switch<Route> render={Switch::render(switch)} />
                     </main>

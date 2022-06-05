@@ -35,40 +35,58 @@ pub fn nav() -> Html {
 
     let avatar_url = "https://avatars.githubusercontent.com/u/206354?s=400&v=4".to_string();
 
+    let container_classes = vec![
+        "md:flex",
+        "flex-col",
+        "md:flex-row",
+        "md:min-h-screen",
+        "w-full",
+        "z-10",
+        // "shadow-2xl",
+        // "md:shadow-l",
+        "border-r-2",
+        "border-r-black",
+        "dark-mode:border-r-gray-200",
+        "md:border-b-2",
+        "md:border-b-gray-800",
+        "md:dark-mode:border-r-gray-200",
+    ];
+
     let link_classes = vec![
         "block",
-        "px-4",
+        "px-8",
         "py-2",
         "mt-2",
         "text-sm",
         "font-semibold",
-        "text-gray-900",
-        "rounded-lg",
-        "dark-mode:hover:bg-gray-600",
-        "dark-mode:focus:bg-gray-600",
+        "text-gray-800",
+        "dark-mode:hover:bg-gray-500",
+        "dark-mode:focus:bg-gray-500",
         "dark-mode:focus:text-white",
         "dark-mode:hover:text-white",
-        "dark-mode:text-gray-200",
-        "hover:text-gray-900",
-        "focus:text-gray-900",
-        "hover:bg-gray-200",
-        "focus:bg-gray-200",
+        "dark-mode:text-gray-300",
+        "hover:text-gray-800",
+        "focus:text-gray-800",
+        "hover:bg-gray-300",
+        "focus:bg-gray-300",
         "focus:outline-none",
         "focus:shadow-outline",
+        "hover:border-r-2",
+        "hover:border-r-blue",
+        "dark-mode:hover:border-r-lightblue",
     ];
 
     html! {
-        <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
-            <div class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
-                <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-around">
+        <div class={classes!(container_classes)}>
+            <div class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-200 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
+                <div class="flex-shrink-0 px-8 py-8 flex flex-row items-center justify-around">
                     <Link<Route>
                         classes={classes!(
                             "text-lg",
                             "font-semibold",
                             "tracking-widest",
-                            "text-gray-900",
+                            "text-gray-800",
                             "uppercase",
-                            "rounded-lg",
                             "dark-mode:text-white",
                             "focus:outline-none",
                             "focus:shadow-outline",
@@ -90,8 +108,6 @@ pub fn nav() -> Html {
                     class={classes!(
                         "flex-grow",
                         "md:block",
-                        "px-4",
-                        "pb-4",
                         "md:pb-0",
                         "md:overflow-y-auto",
                         active_class,

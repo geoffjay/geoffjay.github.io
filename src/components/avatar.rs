@@ -9,7 +9,7 @@ pub struct AvatarProps {
 #[function_component[Avatar]]
 pub fn avatar(props: &AvatarProps) -> Html {
     html! {
-        <div class="w-24 h-24 relative mb-4">
+        <div class="w-36 h-36 relative">
             <div class="group w-full h-full rounded-full overflow-hidden shadow-inner text-center bg-purple table cursor-pointer">
                 <span class="hidden group-hover:table-cell text-white font-bold align-middle">
                     { "GJ" }
