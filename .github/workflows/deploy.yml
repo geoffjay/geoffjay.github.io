@@ -49,6 +49,15 @@ jobs:
           curl -L "$TRUNK_LINK/$TRUNK_VERSION/$TRUNK_FILE.tar.gz" | tar xz
           mv -f trunk $HOME/.local/bin/trunk
 
+      - name: Install bonnie
+        env:
+          BONNIE_LINK: https://github.com/arctic-hen7/bonnie/releases/download
+          BONNIE_VERSION: v0.3.2
+        run: |
+          BONNIE_FILE=bonnie-linux-amd64
+          curl -L "$BONNIE_LINK/$BONNIE_VERSION/$BONNIE_FILE"
+          mv -f $BONNIE_FILE $HOME/.local/bin/bonnie
+
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -79,12 +88,6 @@ jobs:
 
       - name: Add WASM target
         run: rustup target add wasm32-unknown-unknown
-
-      - name: Install bonnie
-        uses: actions-rs/cargo@v1
-        with:
-          command: install
-          args: bonnie
 
       - name: Build release
         run: |
