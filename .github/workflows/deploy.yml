@@ -16,27 +16,39 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
 
-      - uses: actions-rs/cargo@v1
+      - name: Install bonnie
+        uses: actions-rs/cargo@v1
         with:
           command: install
           args: bonnie
 
-      - uses: actions-rs/cargo@v1
+      - name: Check bonnie
+        run: |
+          which bonnie
+          ls -al
+          bonnie --help
+
+      - name: Install trunk
+        uses: actions-rs/cargo@v1
         with:
           command: install
           args: trunk
 
-      - name: Build
+      - name: Build release
         run: |
           trunk build --release
 
-      - name: Deploy
+      - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}

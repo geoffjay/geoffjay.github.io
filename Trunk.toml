@@ -9,6 +9,8 @@ port = 8888
 [watch]
 ignore = [
   ".editorconfig",
+  ".git/",
+  ".github/"
   "README.md",
   "LICENSE.md",
   "rustfmt.toml",
