@@ -8,7 +8,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  deployment:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
+      - name: Pre-install
+        run: |
+          mkdir -p $HOME/.local/bin
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+  build:
+    needs: setup
     runs-on: ubuntu-latest
 
     env:
@@ -20,22 +36,23 @@ jobs:
       # SCCACHE_RECACHE: 1 # uncomment to clear cache
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-
       - name: Install sccache
         env:
-          LINK: https://github.com/mozilla/sccache/releases/download
+          SCCACHE_LINK: https://github.com/mozilla/sccache/releases/download
           SCCACHE_VERSION: 0.2.13
         run: |
           SCCACHE_FILE=sccache-$SCCACHE_VERSION-x86_64-unknown-linux-musl
-          mkdir -p $HOME/.local/bin
-          curl -L "$LINK/$SCCACHE_VERSION/$SCCACHE_FILE.tar.gz" | tar xz
+          curl -L "$SCCACHE_LINK/$SCCACHE_VERSION/$SCCACHE_FILE.tar.gz" | tar xz
           mv -f $SCCACHE_FILE/sccache $HOME/.local/bin/sccache
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install trunk
+        env:
+          TRUNK_LINK: https://github.com/thedodd/trunk/releases/download
+          TRUNK_VERSION: v0.15.0
+        run: |
+          TRUNK_FILE=trunk-x86_64-unknown-linux-gnu
+          curl -L "$TRUNK_LINK/$TRUNK_VERSION/$TRUNK_FILE.tar.gz" | tar xz
+          mv -f trunk $HOME/.local/bin/trunk
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -74,11 +91,11 @@ jobs:
           command: install
           args: bonnie
 
-      - name: Install trunk
-        uses: actions-rs/cargo@v1
-        with:
-          command: install
-          args: trunk
+      # - name: Install trunk
+      #   uses: actions-rs/cargo@v1
+      #   with:
+      #     command: install
+      #     args: trunk
 
       - name: Build release
         run: |
@@ -90,6 +107,11 @@ jobs:
       - name: Stop sccache server
         run: sccache --stop-server || true
 
+  deployment:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
         with:
