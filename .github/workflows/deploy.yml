@@ -8,21 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-
-      - name: Pre-install
-        run: |
-          mkdir -p $HOME/.local/bin
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-
   build:
     needs: setup
     runs-on: ubuntu-latest
@@ -36,6 +21,17 @@ jobs:
       # SCCACHE_RECACHE: 1 # uncomment to clear cache
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
+      - name: Pre-install
+        run: |
+          mkdir -p $HOME/.local/bin
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Install sccache
         env:
           SCCACHE_LINK: https://github.com/mozilla/sccache/releases/download
@@ -91,12 +87,6 @@ jobs:
           command: install
           args: bonnie
 
-      # - name: Install trunk
-      #   uses: actions-rs/cargo@v1
-      #   with:
-      #     command: install
-      #     args: trunk
-
       - name: Build release
         run: |
           trunk build --release
@@ -107,11 +97,6 @@ jobs:
       - name: Stop sccache server
         run: sccache --stop-server || true
 
-  deployment:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Deploy to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
         with:
