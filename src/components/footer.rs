@@ -14,7 +14,7 @@ pub fn footer() -> Html {
                     { ". All Rights Reserved." }
                 </span>
                 <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                    <a href="https://github.com/geoffjay/geoffjay.github.io" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 fill-rule="evenodd"

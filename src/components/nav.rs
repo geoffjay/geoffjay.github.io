@@ -60,7 +60,7 @@ pub fn nav() -> Html {
     html! {
         <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
             <div class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
-                <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+                <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-around">
                     <Link<Route>
                         classes={classes!(
                             "text-lg",
@@ -116,6 +116,16 @@ pub fn nav() -> Html {
                         to={Route::About}
                     >
                         { "Portfolio" }
+                    </Link<Route>>
+                    <Link<Route>
+                        classes={classes!(
+                            "bg-transparent",
+                            "dark-mode:bg-transparent",
+                            link_classes.clone(),
+                        )}
+                        to={Route::Resume}
+                    >
+                        { "Resume" }
                     </Link<Route>>
                     <Link<Route>
                         classes={classes!(

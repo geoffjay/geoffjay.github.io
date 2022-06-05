@@ -8,3 +8,11 @@ log = "0.4"
 wasm-logger = "0.2"
 yew = "0.19.3"
 yew-router = "0.16"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.release]
+opt-level = 3
+debug = false
