@@ -17,13 +17,34 @@ pub enum Route {
     NotFound,
 }
 
+fn switch(route: &Route) -> Html {
+    match route.clone() {
+        Route::Home => html! { <Home /> },
+        Route::About => html! { <About /> },
+        Route::Resume => html! { <Resume /> },
+        Route::NotFound => html! { <h1>{ "404" }</h1> },
+    }
+}
+
 #[function_component(App)]
 pub fn app() -> Html {
+    let main_classes = vec![
+        "flex",
+        "flex-col",
+        "flex-0",
+        "p-8",
+        "w-full",
+        "text-gray-700",
+        "bg-gray-100",
+        "dark-mode:text-gray-200",
+        "dark-mode:bg-gray-700",
+    ];
+
     html! {
         <BrowserRouter>
             <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
                 <Nav />
-                <div class="flex flex-col w-full text-gray-700 bg-gray-100 dark-mode:text-gray-200 dark-mode:bg-gray-700 flex-shrink-0">
+                <div class={classes!(main_classes)}>
                     <main>
                         <Switch<Route> render={Switch::render(switch)} />
                     </main>
@@ -31,14 +52,5 @@ pub fn app() -> Html {
                 </div>
             </div>
         </BrowserRouter>
-    }
-}
-
-fn switch(route: &Route) -> Html {
-    match route.clone() {
-        Route::Home => html! { <Home /> },
-        Route::About => html! { <About /> },
-        Route::Resume => html! { <Resume /> },
-        Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
 }

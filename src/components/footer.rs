@@ -3,8 +3,8 @@ use yew::prelude::*;
 #[function_component(Footer)]
 pub fn footer() -> Html {
     html! {
-        <footer class="p-4 bg-gray-100 sm:p-6 dark:bg-gray-700 inset-x-0 bottom-0">
-            <hr class="my-6 border-gray-600 sm:mx-auto dark:border-gray-300 lg:my-8" />
+        <footer class="bg-gray-100 sm:p-2 dark:bg-gray-700 inset-x-0 bottom-0">
+            <hr class="my-2 border-gray-600 sm:mx-auto dark:border-gray-300 lg:my-4" />
             <div class="sm:flex sm:items-center sm:justify-between">
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
                     { "© 2022" }

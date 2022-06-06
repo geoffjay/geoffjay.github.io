@@ -4,8 +4,20 @@ use yew_router::prelude::*;
 use crate::app::Route;
 use crate::components::avatar::Avatar;
 
+fn active_link_classes(current: &Route, link: &Route) -> Vec<String> {
+    if current.clone() == link.clone() {
+        vec!["bg-gray-300".to_string(), "dark-mode:bg-gray-800".to_string()]
+    } else {
+        vec!["bg-transparent".to_string(), "dark-mode:bg-transparent".to_string()]
+    }
+}
+
 #[function_component(Nav)]
 pub fn nav() -> Html {
+    let location = use_location().unwrap();
+    log::info!("{:?}", location.pathname());
+    log::info!("{:?}", location.route::<Route>());
+
     let navbar_active = use_state_eq(|| false);
 
     let toggle_navbar = {
@@ -36,20 +48,13 @@ pub fn nav() -> Html {
     let avatar_url = "https://avatars.githubusercontent.com/u/206354?s=400&v=4".to_string();
 
     let container_classes = vec![
-        "md:flex",
         "flex-col",
+        "md:flex",
         "md:flex-row",
         "md:min-h-screen",
-        "w-full",
+        "shadow-navRight",
+        // "md:shadow-navBottom",
         "z-10",
-        // "shadow-2xl",
-        // "md:shadow-l",
-        "border-r-2",
-        "border-r-black",
-        "dark-mode:border-r-gray-200",
-        "md:border-b-2",
-        "md:border-b-gray-800",
-        "md:dark-mode:border-r-gray-200",
     ];
 
     let link_classes = vec![
@@ -60,20 +65,25 @@ pub fn nav() -> Html {
         "text-sm",
         "font-semibold",
         "text-gray-800",
-        "dark-mode:hover:bg-gray-500",
-        "dark-mode:focus:bg-gray-500",
-        "dark-mode:focus:text-white",
-        "dark-mode:hover:text-white",
-        "dark-mode:text-gray-300",
         "hover:text-gray-800",
-        "focus:text-gray-800",
         "hover:bg-gray-300",
+        "focus:text-gray-800",
         "focus:bg-gray-300",
         "focus:outline-none",
         "focus:shadow-outline",
-        "hover:border-r-2",
-        "hover:border-r-blue",
-        "dark-mode:hover:border-r-lightblue",
+        "border-transparent",
+        "border-r-4",
+        "hover:border-r-4",
+        "hover:border-red",
+        "dark-mode:text-gray-300",
+        "dark-mode:hover:bg-gray-500",
+        "dark-mode:hover:text-white",
+        "dark-mode:focus:bg-gray-500",
+        "dark-mode:focus:text-white",
+        "dark-mode:border-transparent",
+        "dark-mode:border-r-4",
+        "dark-mode:hover:border-r-4",
+        "dark-mode:hover:border-red",
     ];
 
     html! {
@@ -115,8 +125,9 @@ pub fn nav() -> Html {
                 >
                     <Link<Route>
                         classes={classes!(
-                            "bg-gray-200",
-                            "dark-mode:bg-gray-700",
+                            // "bg-gray-200",
+                            // "dark-mode:bg-gray-700",
+                            active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
                             link_classes.clone(),
                         )}
                         to={Route::About}
@@ -135,8 +146,9 @@ pub fn nav() -> Html {
                     </Link<Route>>
                     <Link<Route>
                         classes={classes!(
-                            "bg-transparent",
-                            "dark-mode:bg-transparent",
+                            // "bg-transparent",
+                            // "dark-mode:bg-transparent",
+                            active_link_classes(&location.route::<Route>().unwrap(), &Route::Resume),
                             link_classes.clone(),
                         )}
                         to={Route::Resume}
