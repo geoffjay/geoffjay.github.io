@@ -1,4 +1,3 @@
-// use yew::prelude::*;
 use yew::{function_component, html, Properties};
 
 #[derive(Properties, PartialEq)]
@@ -6,7 +5,7 @@ pub struct AvatarProps {
     pub url: String,
 }
 
-#[function_component[Avatar]]
+#[function_component(Avatar)]
 pub fn avatar(props: &AvatarProps) -> Html {
     html! {
         <div class="w-36 h-36 relative">

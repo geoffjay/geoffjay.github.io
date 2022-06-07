@@ -1,4 +1,4 @@
-use yew::prelude::*;
+use yew::{classes, function_component, html, use_state_eq, Callback, Children, Properties};
 use yew_router::prelude::*;
 
 use crate::app::Route;
@@ -12,11 +12,62 @@ fn active_link_classes(current: &Route, link: &Route) -> Vec<String> {
     }
 }
 
+#[derive(PartialEq, Properties, Clone)]
+pub struct AnimationWrapperProps {
+    #[prop_or(false)]
+    pub xyz: bool,
+    #[prop_or_default]
+    pub children: Children,
+}
+
+#[function_component(AnimationWrapper)]
+fn animation_wrapper(props: &AnimationWrapperProps) -> Html {
+    let AnimationWrapperProps {
+        xyz,
+        children,
+    } = props.clone();
+
+    let mut node = html! {
+        <div>{ for children.iter() }</div>
+    };
+
+    if xyz {
+        if let yew::virtual_dom::VNode::VTag(tag) = &mut node {
+            tag.add_attribute("xyz", "".to_string());
+        }
+    }
+
+    node
+}
+
+#[derive(PartialEq, Properties, Clone)]
+pub struct AnimationProps {
+    pub xyz: String,
+    #[prop_or_default]
+    pub children: Children,
+}
+
+#[function_component(Animation)]
+fn animation(props: &AnimationProps) -> Html {
+    let AnimationProps {
+        xyz,
+        children,
+    } = props.clone();
+
+    let mut node = html! {
+        <div class="xyz-in">{ for children.iter() }</div>
+    };
+
+    if let yew::virtual_dom::VNode::VTag(tag) = &mut node {
+        tag.add_attribute("xyz", xyz.clone());
+    }
+
+    node
+}
+
 #[function_component(Nav)]
 pub fn nav() -> Html {
     let location = use_location().unwrap();
-    log::info!("{:?}", location.pathname());
-    log::info!("{:?}", location.route::<Route>());
 
     let navbar_active = use_state_eq(|| false);
 
@@ -123,58 +174,63 @@ pub fn nav() -> Html {
                         active_class,
                     )}
                 >
-                    <Link<Route>
-                        classes={classes!(
-                            // "bg-gray-200",
-                            // "dark-mode:bg-gray-700",
-                            active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
-                            link_classes.clone(),
-                        )}
-                        to={Route::About}
-                    >
-                        { "Blog" }
-                    </Link<Route>>
-                    <Link<Route>
-                        classes={classes!(
-                            "bg-transparent",
-                            "dark-mode:bg-transparent",
-                            link_classes.clone(),
-                        )}
-                        to={Route::About}
-                    >
-                        { "Portfolio" }
-                    </Link<Route>>
-                    <Link<Route>
-                        classes={classes!(
-                            // "bg-transparent",
-                            // "dark-mode:bg-transparent",
-                            active_link_classes(&location.route::<Route>().unwrap(), &Route::Resume),
-                            link_classes.clone(),
-                        )}
-                        to={Route::Resume}
-                    >
-                        { "Resume" }
-                    </Link<Route>>
-                    <Link<Route>
-                        classes={classes!(
-                            "bg-transparent",
-                            "dark-mode:bg-transparent",
-                            link_classes.clone(),
-                        )}
-                        to={Route::About}
-                    >
-                        { "About" }
-                    </Link<Route>>
-                    <Link<Route>
-                        classes={classes!(
-                            "bg-transparent",
-                            "dark-mode:bg-transparent",
-                            link_classes.clone(),
-                        )}
-                        to={Route::About}
-                    >
-                        { "Contact" }
-                    </Link<Route>>
+                    <Animation xyz="fade left stagger">
+                        <div class="xyz-nested">
+                            <Link<Route>
+                                classes={classes!(
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    link_classes.clone(),
+                                )}
+                                to={Route::About}
+                            >
+                                { "Blog" }
+                            </Link<Route>>
+                        </div>
+                        <div class="xyz-nested">
+                            <Link<Route>
+                                classes={classes!(
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    link_classes.clone(),
+                                )}
+                                to={Route::About}
+                            >
+                                { "Portfolio" }
+                            </Link<Route>>
+                        </div>
+                        <div class="xyz-nested">
+                            <Link<Route>
+                                classes={classes!(
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Resume),
+                                    link_classes.clone(),
+                                )}
+                                to={Route::Resume}
+                            >
+                                { "Resume" }
+                            </Link<Route>>
+                        </div>
+                        <div class="xyz-nested">
+                            <Link<Route>
+                                classes={classes!(
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    link_classes.clone(),
+                                )}
+                                to={Route::About}
+                            >
+                                { "About" }
+                            </Link<Route>>
+                        </div>
+                        <div class="xyz-nested">
+                            <Link<Route>
+                                classes={classes!(
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    link_classes.clone(),
+                                )}
+                                to={Route::About}
+                            >
+                                { "Contact" }
+                            </Link<Route>>
+                        </div>
+                    </Animation>
                     // <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     //     <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                     //         <span>Dropdown</span>
