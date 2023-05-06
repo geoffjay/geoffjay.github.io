@@ -38,7 +38,7 @@
       <th colspan="2"><h3>Developing</h3></th>
     </tr>
     <tr>
-      <td style="width: 25%;">
+      <td>
         <code>bonnie build</code>
       </td>
       <td>
@@ -46,11 +46,12 @@
       </td>
     </tr>
     <tr>
-      <td style="width: 25%;">
+      <td>
         <code>bonnie run frontend</code>
       </td>
       <td>
-        Build and run the site using <code>trunk serve</code>, visit http://localhost:8888 to access the site in development.
+        Build and run the site using <code>trunk serve</code>, visit
+        <a href="http://localhost:8888" _target="blank">http://localhost:8888</a> to access the site in development.
       </td>
     </tr>
   </table>
