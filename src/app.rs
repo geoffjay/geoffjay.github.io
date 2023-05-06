@@ -17,8 +17,8 @@ pub enum Route {
     NotFound,
 }
 
-fn switch(route: &Route) -> Html {
-    match route.clone() {
+fn switch(routes: Route) -> Html {
+    match routes {
         Route::Home => html! { <Home /> },
         Route::About => html! { <About /> },
         Route::Resume => html! { <Resume /> },
@@ -46,7 +46,7 @@ pub fn app() -> Html {
                 <Nav />
                 <div class={classes!(main_classes)}>
                     <main>
-                        <Switch<Route> render={Switch::render(switch)} />
+                        <Switch<Route> render={switch} />
                     </main>
                     <Footer />
                 </div>

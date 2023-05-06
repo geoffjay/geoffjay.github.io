@@ -1,4 +1,4 @@
-use yew::{classes, function_component, html, use_state_eq, Callback, Children, Properties};
+use yew::{classes, function_component, html, use_state_eq, Callback, Children, Html, Properties};
 use yew_router::prelude::*;
 
 use crate::app::Route;
@@ -68,6 +68,7 @@ fn animation(props: &AnimationProps) -> Html {
 #[function_component(Nav)]
 pub fn nav() -> Html {
     let location = use_location().unwrap();
+    let current_page = location.query::<PageQuery>().map(|it| it.page).unwrap_or(1);
 
     let navbar_active = use_state_eq(|| false);
 
