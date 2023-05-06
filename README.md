@@ -50,8 +50,9 @@
         <code>bonnie run frontend</code>
       </td>
       <td>
-        Build and run the site using <code>trunk serve</code>, visit
-        <a href="http://localhost:8888" _target="blank">http://localhost:8888</a> to access the site in development.
+        Build and run the site using <code>trunk serve</code>, visit <a
+        href="http://localhost:8888" target="_blank">http://localhost:8888</a>
+        to access the site in development.
       </td>
     </tr>
   </table>
