@@ -4,9 +4,7 @@ use yew::prelude::*;
 pub fn about() -> Html {
     html! {
         <div class="container">
-            <div class="notification is-primary">
-                <h1 class="title">{"[WIP] Portfolio"}</h1>
-            </div>
+            <div class="text-xl">{"About"}</div>
             <section class="section">
                 <p>
                     <a href="https://github.com/geoffjay">

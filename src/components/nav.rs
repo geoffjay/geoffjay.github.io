@@ -178,10 +178,10 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Blog),
                                     link_classes.clone(),
                                 )}
-                                to={Route::About}
+                                to={Route::Blog}
                             >
                                 { "Blog" }
                             </Link<Route>>
@@ -189,10 +189,10 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Portfolio),
                                     link_classes.clone(),
                                 )}
-                                to={Route::About}
+                                to={Route::Portfolio}
                             >
                                 { "Portfolio" }
                             </Link<Route>>
@@ -222,10 +222,10 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Contact),
                                     link_classes.clone(),
                                 )}
-                                to={Route::About}
+                                to={Route::Contact}
                             >
                                 { "Contact" }
                             </Link<Route>>

@@ -2,7 +2,14 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 use crate::components::{footer::Footer, nav::Nav};
-use crate::pages::{about::About, home::Home, resume::Resume};
+use crate::pages::{
+    about::About,
+    blog::Blog,
+    contact::Contact,
+    home::Home,
+    portfolio::Portfolio,
+    resume::Resume,
+};
 
 #[derive(Clone, Routable, PartialEq, Debug)]
 pub enum Route {
@@ -10,6 +17,12 @@ pub enum Route {
     Home,
     #[at("/about")]
     About,
+    #[at("/blog")]
+    Blog,
+    #[at("/contact")]
+    Contact,
+    #[at("/portfolio")]
+    Portfolio,
     #[at("/resume")]
     Resume,
     #[not_found]
@@ -21,6 +34,9 @@ fn switch(route: &Route) -> Html {
     match route.clone() {
         Route::Home => html! { <Home /> },
         Route::About => html! { <About /> },
+        Route::Blog => html! { <Blog /> },
+        Route::Contact => html! { <Contact /> },
+        Route::Portfolio => html! { <Portfolio /> },
         Route::Resume => html! { <Resume /> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
