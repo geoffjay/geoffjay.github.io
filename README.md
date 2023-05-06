@@ -6,16 +6,82 @@
 
   <p>
     <a href="https://github.com/geoffjay/geoffjay.github.io/actions">
-      <img alt="Actions" src="https://github.com/geoffjay/geoffjay.github.io/actions/workflows/deploy.yml/badge.svg" />
+      <img
+        alt="Actions"
+        src="https://github.com/geoffjay/geoffjay.github.io/actions/workflows/deploy.yml/badge.svg"
+      />
     </a>
     <a href="https://blog.rust-lang.org/2020/12/31/Rust-1.56.0.html">
-      <img alt="Rustc Version 1.56.0+" src="https://img.shields.io/badge/rustc-1.56%2B-lightgrey.svg" />
+      <img
+        alt="Rustc Version 1.56.0+"
+        src="https://img.shields.io/badge/rustc-1.56%2B-lightgrey.svg"
+      />
     </a>
   </p>
 
-  <h3>Built with</h3>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/106px-Rust_programming_language_black_logo.svg.png" width="150" />
-  <img src="https://yew.rs/img/logo.png" width="150" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/240px-Tailwind_CSS_Logo.svg.png" width="150" />
-  <img src="https://raw.githubusercontent.com/ingram-projects/animxyz/master/docs/src/assets/images/animxyz-logo.svg" width="150" />
+  <table style="background-color: white;">
+    <tr>
+      <th colspan="4"><h3>Built with</h3></th>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://www.rust-lang.org/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/rust.png"
+            width="150"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://yew.rs/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/yew.png"
+            width="150"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://tailwindcss.com/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/tailwind.png"
+            width="150"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://animxyz.com/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/animxyz.svg"
+            width="150"
+          />
+        </a>
+      </td>
+    </tr>
+  </table>
+
+  <hr />
+
+  <table style="background-color: white;">
+    <tr>
+      <th colspan="2"><h3>Developing</h3></th>
+    </tr>
+    <tr>
+      <td>
+        <code>bonnie build</code>
+      </td>
+      <td>
+        Compile the site.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>bonnie run frontend</code>
+      </td>
+      <td>
+        Build and run the site using <code>trunk serve</code>, visit <a
+        href="http://localhost:8888" target="_blank">http://localhost:8888</a>
+        to access the site in development.
+      </td>
+    </tr>
+  </table>
 </div>
