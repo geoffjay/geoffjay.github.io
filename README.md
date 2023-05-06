@@ -38,7 +38,7 @@
       <th colspan="2"><h3>Developing</h3></th>
     </tr>
     <tr>
-      <td style="width: 200px;">
+      <td style="width: 400px;">
         <code>bonnie build</code>
       </td>
       <td>
@@ -46,7 +46,7 @@
       </td>
     </tr>
     <tr>
-      <td style="width: 200px;">
+      <td style="width: 400px;">
         <code>bonnie run frontend</code>
       </td>
       <td>
