@@ -24,10 +24,38 @@
       <th colspan="4"><h3>Built with</h3></th>
     </tr>
     <tr>
-      <td><img src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/rust.png" width="150" /></td>
-      <td><img src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/yew.png" width="150" /></td>
-      <td><img src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/tailwind.png" width="150" /></td>
-      <td><img src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/animxyz.svg" width="150" /></td>
+      <td>
+        <a href="https://www.rust-lang.org/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/rust.png"
+            width="150"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://yew.rs/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/yew.png"
+            width="150"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://tailwindcss.com/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/tailwind.png"
+            width="150"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://animxyz.com/">
+          <img
+            src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/animxyz.svg"
+            width="150"
+          />
+        </a>
+      </td>
     </tr>
   </table>
 
