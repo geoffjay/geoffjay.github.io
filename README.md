@@ -30,4 +30,28 @@
       <td><img src="https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/docs/assets/images/animxyz.svg" width="150" /></td>
     </tr>
   </table>
+
+  <hr />
+
+  <table style="background-color: white;">
+    <tr>
+      <th colspan="2"><h3>Developing</h3></th>
+    </tr>
+    <tr>
+      <td style="width: 200px;">
+        <code>bonnie build</code>
+      </td>
+      <td>
+        Compile the site.
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 200px;">
+        <code>bonnie run frontend</code>
+      </td>
+      <td>
+        Build and run the site using <code>trunk serve</code>, visit http://localhost:8888 to access the site in development.
+      </td>
+    </tr>
+  </table>
 </div>
