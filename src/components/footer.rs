@@ -7,7 +7,7 @@ pub fn footer() -> Html {
             <hr class="my-2 border-gray-600 sm:mx-auto dark:border-gray-300 lg:my-4" />
             <div class="sm:flex sm:items-center sm:justify-between">
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                    { "© 2022" }
+                    { "© 2022 " }
                     <a href="https://github.com/geoffjay" target="_blank" class="hover:underline">
                         { "geoffjay" }
                     </a>

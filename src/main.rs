@@ -4,6 +4,7 @@ extern crate yew_router;
 mod app;
 mod components;
 mod pages;
+mod utils;
 
 use app::App;
 
