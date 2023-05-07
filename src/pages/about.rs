@@ -9,7 +9,7 @@ use yew::prelude::*;
 
 use crate::utils::markdown::render_markdown;
 
-const MARKDOWN_URL: &str = "https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/main/LICENSE.md";
+const MARKDOWN_URL: &str = "https://raw.githubusercontent.com/geoffjay/geoffjay.github.io/markdown-again/assets/posts/2023-05-07_rendering_markdown_in_a_component.md";
 
 /// Something wrong has occurred while fetching an external resource.
 #[derive(Debug, Clone, PartialEq)]
@@ -31,7 +31,7 @@ impl From<JsValue> for FetchError {
     }
 }
 
-/// Fetches markdown from README.md.
+/// Fetches markdown for `url`.
 async fn fetch_markdown(url: &'static str) -> Result<String, FetchError> {
     let mut opts = RequestInit::new();
 
