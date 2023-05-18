@@ -3,7 +3,7 @@
 use pulldown_cmark::{Alignment, CodeBlockKind, Event, HeadingLevel, Options, Parser, Tag};
 use yew::virtual_dom::{VNode, VTag, VText};
 use yew::{html, Classes, Html};
-use log::info;
+// use yew_prism::Prism;
 
 /// Adds a class to the VTag.
 /// You can also provide multiple classes separated by ascii whitespaces.
@@ -27,7 +27,7 @@ fn add_class(vtag: &mut VTag, class: impl Into<Classes>) {
 pub fn render_markdown(src: &str) -> Html {
     let mut elems = vec![];
     let mut spine = vec![];
-    info!("{}", src.clone());
+    // let mut codeblock = false;
 
     macro_rules! add_child {
         ($child:expr) => {{
@@ -46,13 +46,23 @@ pub fn render_markdown(src: &str) -> Html {
                 spine.push(make_tag(tag));
             }
             Event::End(tag) => {
-                // TODO Verify stack end.
+                // TODO: Verify stack end.
                 let l = spine.len();
                 assert!(l >= 1);
-                let mut top = spine.pop().unwrap();
+                let mut top = spine.pop().unwrap().clone();
                 if let Tag::CodeBlock(_) = tag {
+                    // codeblock = true;
+                    let top_children = top.children();
+                    let vnode = &top_children[0];
+
+                    if let VNode::VText(vtext) = vnode {
+                        let text = vtext.text.clone();
+                        top.add_attribute("code", text);
+                    }
+
                     let mut pre = VTag::new("pre");
                     pre.add_child(top.into());
+                    pre.add_attribute("class", "p-4 m-6 border-2 rounded-sm shadow-md");
                     top = pre;
                 } else if let Tag::Table(aligns) = tag {
                     if let Some(top_children) = top.children_mut() {
@@ -77,8 +87,8 @@ pub fn render_markdown(src: &str) -> Html {
                     if let Some(top_children) = top.children_mut() {
                         for c in top_children.iter_mut() {
                             if let VNode::VTag(ref mut vtag) = c {
-                                // TODO
-                                //                            vtag.tag = "th".into();
+                                // TODO:
+                                // vtag.tag = "th".into();
                                 vtag.add_attribute("scope", "col");
                             }
                         }
@@ -100,6 +110,10 @@ pub fn render_markdown(src: &str) -> Html {
 
     if elems.len() == 1 {
         VNode::VTag(Box::new(elems.pop().unwrap()))
+    // } else if codeblock {
+    //     html! {
+    //         <div><Prism code="let greeting: &str = \"Hello World\";" language="rust" /></div>
+    //     }
     } else {
         html! {
             <div>{ for elems.into_iter() }</div>
@@ -109,57 +123,43 @@ pub fn render_markdown(src: &str) -> Html {
 
 fn make_tag(t: Tag) -> VTag {
     match t {
-        Tag::Paragraph => VTag::new("p"),
-        Tag::Heading(n, ..) => {
-            let mut el = VTag::new("p");
-            let heading_size = match n {
-                HeadingLevel::H1 => "text-6xl",
-                HeadingLevel::H2 => "text-5xl",
-                HeadingLevel::H3 => "text-4xl",
-                HeadingLevel::H4 => "text-3xl",
-                HeadingLevel::H5 => "text-2xl",
-                HeadingLevel::H6 => "text-xl",
-            };
-            el.add_attribute("class", heading_size);
-            el
-        },
-        Tag::BlockQuote => {
-            let mut el = VTag::new("blockquote");
-            el.add_attribute("class", "blockquote");
-            el
-        }
+        Tag::Paragraph => translate_paragraph(),
+        Tag::Heading(n, ..) => translate_heading(n),
+        Tag::BlockQuote => translate_blockquote(),
         Tag::CodeBlock(code_block_kind) => {
-            let mut el = VTag::new("code");
+            let mut el = VTag::new("Prism");
 
             if let CodeBlockKind::Fenced(lang) = code_block_kind {
-                // Different color schemes may be used for different code blocks,
-                // but a different library (likely js based at the moment) would be necessary to
-                // actually provide the highlighting support by locating the
-                // language classes and applying dom transforms on their contents.
                 match lang.as_ref() {
-                    "html" => el.add_attribute("class", "html-language"),
-                    "rust" => el.add_attribute("class", "rust-language"),
-                    "java" => el.add_attribute("class", "java-language"),
-                    "c" => el.add_attribute("class", "c-language"),
-                    _ => {} // Add your own language highlighting support
+                    "c" => el.add_attribute("language", "c"),
+                    "go" => el.add_attribute("language", "go"),
+                    "html" => el.add_attribute("language", "html"),
+                    "ruby" => el.add_attribute("language", "ruby"),
+                    "rust" => el.add_attribute("language", "rust"),
+                    _ => {},
                 };
             }
 
             el
-        }
-        Tag::List(None) => VTag::new("ul"),
+        },
+        Tag::List(None) => {
+            let mut el = VTag::new("ul");
+            el.add_attribute("class", "list-disc my-4 px-6");
+            el
+        },
         Tag::List(Some(1)) => VTag::new("ol"),
         Tag::List(Some(ref start)) => {
             let mut el = VTag::new("ol");
             el.add_attribute("start", start.to_string());
+            el.add_attribute("class", "list-decimal my-4 px-6");
             el
-        }
+        },
         Tag::Item => VTag::new("li"),
         Tag::Table(_) => {
             let mut el = VTag::new("table");
             el.add_attribute("class", "table");
             el
-        }
+        },
         Tag::TableHead => VTag::new("th"),
         Tag::TableRow => VTag::new("tr"),
         Tag::TableCell => VTag::new("td"),
@@ -167,12 +167,12 @@ fn make_tag(t: Tag) -> VTag {
             let mut el = VTag::new("span");
             el.add_attribute("class", "font-italic");
             el
-        }
+        },
         Tag::Strong => {
             let mut el = VTag::new("span");
             el.add_attribute("class", "font-weight-bold");
             el
-        }
+        },
         Tag::Link(_link_type, ref href, ref title) => {
             let mut el = VTag::new("a");
             el.add_attribute("href", href.to_string());
@@ -181,7 +181,7 @@ fn make_tag(t: Tag) -> VTag {
                 el.add_attribute("title", title);
             }
             el
-        }
+        },
         Tag::Image(_link_type, ref src, ref title) => {
             let mut el = VTag::new("img");
             el.add_attribute("src", src.to_string());
@@ -190,14 +190,44 @@ fn make_tag(t: Tag) -> VTag {
                 el.add_attribute("title", title);
             }
             el
-        }
-        Tag::FootnoteDefinition(ref _footnote_id) => VTag::new("span"), // Footnotes are not
-        // rendered as anything
-        // special
-        Tag::Strikethrough => {
-            let mut el = VTag::new("span");
-            el.add_attribute("class", "text-decoration-strikethrough");
-            el
-        }
+        },
+        Tag::FootnoteDefinition(ref _footnote_id) => VTag::new("span"),
+        Tag::Strikethrough => translate_strikethrough(),
     }
+}
+
+fn translate_paragraph() -> VTag {
+    let mut el = VTag::new("p");
+    el.add_attribute("class", "text-base/7");
+    el
+}
+
+fn translate_heading(n: HeadingLevel) -> VTag {
+    let mut el = VTag::new("p");
+    let heading_size = match n {
+        HeadingLevel::H1 => "text-6xl",
+        HeadingLevel::H2 => "text-5xl",
+        HeadingLevel::H3 => "text-4xl",
+        HeadingLevel::H4 => "text-3xl",
+        HeadingLevel::H5 => "text-2xl",
+        HeadingLevel::H6 => "text-xl",
+    };
+    let classes = format!("py-4 {}", heading_size);
+    el.add_attribute("class", classes);
+    el
+}
+
+fn translate_blockquote() -> VTag {
+    // let mut el = VTag::new("blockquote");
+    // el.add_attribute("class", "blockquote");
+    // el
+    let mut el = VTag::new("blockquote");
+    el.add_attribute("class", "border-l-4 border-gray-400 italic my-8 pl-8");
+    el
+}
+
+fn translate_strikethrough() -> VTag {
+    let mut el = VTag::new("span");
+    el.add_attribute("class", "text-decoration-strikethrough");
+    el
 }

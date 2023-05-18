@@ -12,6 +12,7 @@ wasm-bindgen-futures = "0.4"
 wasm-logger = "0.2"
 yew = "0.19.3"
 yew-router = "0.16"
+yew_prism = "0.4"
 
 [dependencies.web-sys]
 version = "0.3"

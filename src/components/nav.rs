@@ -111,8 +111,7 @@ pub fn nav() -> Html {
     let link_classes = vec![
         "block",
         "px-8",
-        "py-2",
-        "mt-2",
+        "py-4",
         "text-sm",
         "font-semibold",
         "text-gray-800",
