@@ -126,34 +126,10 @@ fn make_tag(t: Tag) -> VTag {
         Tag::Paragraph => translate_paragraph(),
         Tag::Heading(n, ..) => translate_heading(n),
         Tag::BlockQuote => translate_blockquote(),
-        Tag::CodeBlock(code_block_kind) => {
-            let mut el = VTag::new("Prism");
-
-            if let CodeBlockKind::Fenced(lang) = code_block_kind {
-                match lang.as_ref() {
-                    "c" => el.add_attribute("language", "c"),
-                    "go" => el.add_attribute("language", "go"),
-                    "html" => el.add_attribute("language", "html"),
-                    "ruby" => el.add_attribute("language", "ruby"),
-                    "rust" => el.add_attribute("language", "rust"),
-                    _ => {},
-                };
-            }
-
-            el
-        },
-        Tag::List(None) => {
-            let mut el = VTag::new("ul");
-            el.add_attribute("class", "list-disc my-4 px-6");
-            el
-        },
+        Tag::CodeBlock(code_block_kind) => translate_codeblock(code_block_kind),
+        Tag::List(None) => translate_unordered_list(),
         Tag::List(Some(1)) => VTag::new("ol"),
-        Tag::List(Some(ref start)) => {
-            let mut el = VTag::new("ol");
-            el.add_attribute("start", start.to_string());
-            el.add_attribute("class", "list-decimal my-4 px-6");
-            el
-        },
+        Tag::List(Some(ref start)) => translate_ordered_list(start),
         Tag::Item => VTag::new("li"),
         Tag::Table(_) => {
             let mut el = VTag::new("table");
@@ -223,6 +199,36 @@ fn translate_blockquote() -> VTag {
     // el
     let mut el = VTag::new("blockquote");
     el.add_attribute("class", "border-l-4 border-gray-400 italic my-8 pl-8");
+    el
+}
+
+fn translate_codeblock(code_block_kind: CodeBlockKind) -> VTag {
+    let mut el = VTag::new("Prism");
+
+    if let CodeBlockKind::Fenced(lang) = code_block_kind {
+        match lang.as_ref() {
+            "c" => el.add_attribute("language", "c"),
+            "go" => el.add_attribute("language", "go"),
+            "html" => el.add_attribute("language", "html"),
+            "ruby" => el.add_attribute("language", "ruby"),
+            "rust" => el.add_attribute("language", "rust"),
+            _ => {},
+        };
+    }
+
+    el
+}
+
+fn translate_unordered_list() -> VTag {
+    let mut el = VTag::new("ul");
+    el.add_attribute("class", "list-disc my-4 px-6");
+    el
+}
+
+fn translate_ordered_list(start: &u64) -> VTag {
+    let mut el = VTag::new("ol");
+    el.add_attribute("start", start.to_string());
+    el.add_attribute("class", "list-decimal my-4 px-6");
     el
 }
 

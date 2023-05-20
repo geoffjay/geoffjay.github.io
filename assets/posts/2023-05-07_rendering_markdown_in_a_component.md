@@ -1,10 +1,10 @@
-# Rendering Markdown in a Component
+## Rendering Markdown in a Component
 
 I added Markdown rendering to my personal site and maybe I'll document it
 properly here, but for now I need a post with all the markdown tags to be
 converted for testing purposes.
 
-## Styling Text
+### Styling Text
 
 | Style                  | Example            | Output                                 |
 | ---------------------- | ------------------ | -------------------------------------- |
@@ -16,7 +16,9 @@ converted for testing purposes.
 | Subscript              | `<sub></sub>`      | <sub>This is a subscript text</sub>    |
 | Superscript            | `<sup></sup>`      | <sup>This is a superscript text</sup>  |
 
-## Headings
+---
+
+### Headings
 
 # Heading 1
 
@@ -30,7 +32,9 @@ converted for testing purposes.
 
 ###### Heading 6
 
-**lists**
+---
+
+### Lists
 
 unordered list using `*`:
 
@@ -56,9 +60,21 @@ Ordered list using `1. ... n.`:
 2. item 2
 3. item 3
 
-**links**
+---
 
-**code**
+### Links
+
+Sample [link](https://github.com/geoffjay/geoffjay.github.io)
+
+---
+
+### Code
+
+#### Inline
+
+This is some `inline code`.
+
+#### Block
 
 ```rust
 /// Fetches markdown for `url`.
