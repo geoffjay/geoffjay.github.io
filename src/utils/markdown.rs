@@ -98,7 +98,7 @@ pub fn render_markdown(src: &str) -> Html {
             Event::Code(text) => {
                 let mut vtag = VTag::new("code");
                 vtag.add_child(VText::new(text.to_string()).into());
-                vtag.add_attribute("class", "border border-gray-500 rounded-sm bg-gray-300 text-gray-800 p-1");
+                vtag.add_attribute("class", "border border-gray-500 rounded-sm bg-gray-300 text-gray-800 text-xs p-1");
                 add_child!(vtag.into());
             }
             Event::Html(text) => add_child!(VText::new(text.to_string()).into()),
@@ -130,7 +130,6 @@ fn start_tag(tag: Tag) -> VTag {
         Tag::Item => VTag::new("li"),
         Tag::Table(_) => translate_table(),
         Tag::TableHead => translate_table_head(),
-        // Tag::TableHead => VTag::new("thead"),
         Tag::TableRow => translate_table_row(),
         Tag::TableCell => translate_table_cell(),
         Tag::Emphasis => translate_emphasis(),
@@ -170,7 +169,7 @@ fn translate_heading(n: HeadingLevel) -> VTag {
 
 fn translate_blockquote() -> VTag {
     let mut el = VTag::new("blockquote");
-    el.add_attribute("class", "border-l-4 border-gray-400 italic my-8 pl-8");
+    el.add_attribute("class", "border-l-4 border-red italic m-4 pl-4");
     el
 }
 
@@ -236,13 +235,19 @@ fn translate_table_cell() -> VTag {
 
 fn translate_emphasis() -> VTag {
     let mut el = VTag::new("span");
-    el.add_attribute("class", "font-italic");
+    el.add_attribute("class", "italic");
     el
 }
 
 fn translate_strong() -> VTag {
     let mut el = VTag::new("span");
-    el.add_attribute("class", "font-weight-bold");
+    el.add_attribute("class", "font-bold");
+    el
+}
+
+fn translate_strikethrough() -> VTag {
+    let mut el = VTag::new("span");
+    el.add_attribute("class", "line-through");
     el
 }
 
@@ -268,11 +273,5 @@ fn translate_image(src: &str, title: &str) -> VTag {
 fn translate_footnote_definition(footnote_id: &str) -> VTag {
     let mut el = VTag::new("span");
     el.add_attribute("id", footnote_id.to_string());
-    el
-}
-
-fn translate_strikethrough() -> VTag {
-    let mut el = VTag::new("span");
-    el.add_attribute("class", "text-decoration-strikethrough");
     el
 }
