@@ -696,7 +696,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('geoffjay-github-io-687ff49bccacdd34_bg.wasm', import.meta.url);
+        input = new URL('geoffjay-github-io-d9db41287f553a22_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
