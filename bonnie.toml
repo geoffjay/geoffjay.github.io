@@ -4,13 +4,13 @@ version="0.3.2"
 ## Builds Tailwind CSS for development (no purging)
 build-tailwind-dev = [
     "cd tools/tailwind-yew-builder",
-    "INPUT=../../config/ SOURCE_CODE=../../ docker compose up dev"
+    "INPUT=../../config/ SOURCE_CODE=../../ docker compose up dev",
 ]
 
 ## Builds Tailwind CSS for production (maximum purging and minification)
 build-tailwind-prod = [
     "cd tools/tailwind-yew-builder",
-    "INPUT=../../config/ SOURCE_CODE=../../ docker compose up prod"
+    "INPUT=../../config/ SOURCE_CODE=../../ docker compose up prod",
 ]
 
 ## Builds Tailwind CSS for development usage
@@ -28,11 +28,22 @@ build.cmd = "cargo build"
 ## Builds the frontend
 build.subcommands.frontend = [
     "bonnie build-tailwind-prod",
-    "cargo build"
+    "cargo build",
 ]
 
 ## Runs the frontend, watching for changes (uses Trunk)
 ## Tailwind is assumed to be set up after `setup`
 run.subcommands.frontend = [
-    "trunk serve"
+    "trunk serve",
+]
+
+## Create a new blog post
+post.cmd = [
+  "export TITLE=$(echo %title | sed -E \"s/[[:blank:]]/_/g\" | tr \"[:upper:]\" \"[:lower:]\")",
+  "export POST=$(date +%Y-%m-%d)_$TITLE.md",
+  "touch assets/posts/$POST",
+  "git add assets/posts/$POST",
+]
+post.args = [
+  "title",
 ]

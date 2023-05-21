@@ -55,7 +55,7 @@ follow.
 
 ## Terms And Conditions For Copying, Distribution And Modification
 
-**0.** This License applies to any program or other work which contains a notice
+0. This License applies to any program or other work which contains a notice
 placed by the copyright holder saying it may be distributed under the terms of
 this General Public License. The "Program", below, refers to any such program or
 work, and a "work based on the Program" means either the Program or any
@@ -70,7 +70,7 @@ restricted, and the output from the Program is covered only if its contents
 constitute a work based on the Program (independent of having been made by
 running the Program). Whether that is true depends on what the Program does.
 
-**1.** You may copy and distribute verbatim copies of the Program's source code
+1. You may copy and distribute verbatim copies of the Program's source code
 as you receive it, in any medium, provided that you conspicuously and
 appropriately publish on each copy an appropriate copyright notice and
 disclaimer of warranty; keep intact all the notices that refer to this License
@@ -80,7 +80,7 @@ a copy of this License along with the Program.
 You may charge a fee for the physical act of transferring a copy, and you may at
 your option offer warranty protection in exchange for a fee.
 
-**2.** You may modify your copy or copies of the Program or any portion of it,
+2. You may modify your copy or copies of the Program or any portion of it,
 thus forming a work based on the Program, and copy and distribute such
 modifications or work under the terms of Section 1 above, provided that you also
 meet all of these conditions:
@@ -122,7 +122,7 @@ Program (or with a work based on the Program) on a volume of a storage or
 distribution medium does not bring the other work under the scope of this
 License.
 
-**3.** You may copy and distribute the Program (or a work based on it, under
+3. You may copy and distribute the Program (or a work based on it, under
 Section 2) in object code or executable form under the terms of Sections 1 and 2
 above provided that you also do one of the following:
 
@@ -157,14 +157,14 @@ from a designated place, then offering equivalent access to copy the source code
 from the same place counts as distribution of the source code, even though third
 parties are not compelled to copy the source along with the object code.
 
-**4.** You may not copy, modify, sublicense, or distribute the Program except as
+4. You may not copy, modify, sublicense, or distribute the Program except as
 expressly provided under this License. Any attempt otherwise to copy, modify,
 sublicense or distribute the Program is void, and will automatically terminate
 your rights under this License. However, parties who have received copies, or
 rights, from you under this License will not have their licenses terminated so
 long as such parties remain in full compliance.
 
-**5.** You are not required to accept this License, since you have not signed
+5. You are not required to accept this License, since you have not signed
 it. However, nothing else grants you permission to modify or distribute the
 Program or its derivative works. These actions are prohibited by law if you do
 not accept this License. Therefore, by modifying or distributing the Program (or
@@ -172,14 +172,14 @@ any work based on the Program), you indicate your acceptance of this License to
 do so, and all its terms and conditions for copying, distributing or modifying
 the Program or works based on it.
 
-**6.** Each time you redistribute the Program (or any work based on the
+6. Each time you redistribute the Program (or any work based on the
 Program), the recipient automatically receives a license from the original
 licensor to copy, distribute or modify the Program subject to these terms and
 conditions. You may not impose any further restrictions on the recipients'
 exercise of the rights granted herein. You are not responsible for enforcing
 compliance by third parties to this License.
 
-**7.** If, as a consequence of a court judgment or allegation of patent
+7. If, as a consequence of a court judgment or allegation of patent
 infringement or for any other reason (not limited to patent issues), conditions
 are imposed on you (whether by court order, agreement or otherwise) that
 contradict the conditions of this License, they do not excuse you from the
@@ -208,7 +208,7 @@ choice.
 This section is intended to make thoroughly clear what is believed to be a
 consequence of the rest of this License.
 
-**8.** If the distribution and/or use of the Program is restricted in certain
+8. If the distribution and/or use of the Program is restricted in certain
 countries either by patents or by copyrighted interfaces, the original copyright
 holder who places the Program under this License may add an explicit
 geographical distribution limitation excluding those countries, so that
@@ -216,7 +216,7 @@ distribution is permitted only in or among countries not thus excluded. In such
 case, this License incorporates the limitation as if written in the body of this
 License.
 
-**9.** The Free Software Foundation may publish revised and/or new versions of
+9. The Free Software Foundation may publish revised and/or new versions of
 the General Public License from time to time. Such new versions will be similar
 in spirit to the present version, but may differ in detail to address new
 problems or concerns.
@@ -228,7 +228,7 @@ or of any later version published by the Free Software Foundation. If the
 Program does not specify a version number of this License, you may choose any
 version ever published by the Free Software Foundation.
 
-**10.** If you wish to incorporate parts of the Program into other free programs
+10. If you wish to incorporate parts of the Program into other free programs
 whose distribution conditions are different, write to the author to ask for
 permission. For software which is copyrighted by the Free Software Foundation,
 write to the Free Software Foundation; we sometimes make exceptions for this.
@@ -238,7 +238,7 @@ software generally.
 
 ## No Warranty
 
-**11.** BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR
+11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR
 THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE
 STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM
 "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
@@ -247,7 +247,7 @@ PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
 PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
 ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
 
-**12.** IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
 WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE
 THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
 GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR

@@ -1,6 +1,7 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
+use crate::bindings;
 use crate::components::{footer::Footer, nav::Nav};
 use crate::pages::{
     about::About,
@@ -56,17 +57,26 @@ pub fn app() -> Html {
         "dark-mode:bg-gray-700",
     ];
 
+    bindings::highlight();
+
     html! {
-        <BrowserRouter>
-            <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
-                <Nav />
-                <div class={classes!(main_classes)}>
-                    <main>
-                        <Switch<Route> render={Switch::render(switch)} />
-                    </main>
-                    <Footer />
+        <>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-ruby.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
+            <BrowserRouter>
+                <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+                    <Nav />
+                    <div class={classes!(main_classes)}>
+                        <main>
+                            <Switch<Route> render={Switch::render(switch)} />
+                        </main>
+                        <Footer />
+                    </div>
                 </div>
-            </div>
-        </BrowserRouter>
+            </BrowserRouter>
+        </>
     }
 }
