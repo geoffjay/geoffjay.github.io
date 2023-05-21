@@ -2,6 +2,7 @@ extern crate yew;
 extern crate yew_router;
 
 mod app;
+mod bindings;
 mod components;
 mod pages;
 mod utils;

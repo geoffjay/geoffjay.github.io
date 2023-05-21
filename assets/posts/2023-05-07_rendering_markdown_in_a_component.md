@@ -64,7 +64,9 @@ Ordered list using `1. ... n.`:
 
 ### Links
 
-Sample [link](https://github.com/geoffjay/geoffjay.github.io)
+A sample [link](https://github.com/geoffjay/geoffjay.github.io) using the
+`[link](http://example.com)` syntax, and https://github.com/geoffjay/geoffjay.github.io
+using the URL.
 
 ---
 
@@ -93,3 +95,10 @@ async fn fetch_markdown(url: &'static str) -> Result<String, FetchError> {
     Ok(text.as_string().unwrap())
 }
 ```
+
+---
+
+### Blockquote
+
+> **Note**
+> This is a blockquote
