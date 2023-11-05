@@ -12,7 +12,7 @@ use crate::pages::{
     resume::Resume,
 };
 
-#[derive(Clone, Routable, PartialEq, Debug)]
+#[derive(Clone, Debug, Routable, PartialEq, Eq)]
 pub enum Route {
     #[at("/")]
     Home,
@@ -31,8 +31,8 @@ pub enum Route {
     NotFound,
 }
 
-fn switch(route: &Route) -> Html {
-    match route.clone() {
+fn switch(routes: Route) -> Html {
+    match routes.clone() {
         Route::Home => html! { <Home /> },
         Route::About => html! { <About /> },
         Route::Blog => html! { <Blog /> },
@@ -66,17 +66,17 @@ pub fn app() -> Html {
             <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-ruby.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
-            <BrowserRouter>
+            <HashRouter>
                 <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
                     <Nav />
                     <div class={classes!(main_classes)}>
                         <main>
-                            <Switch<Route> render={Switch::render(switch)} />
+                            <Switch<Route> render={switch} />
                         </main>
                         <Footer />
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         </>
     }
 }

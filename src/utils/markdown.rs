@@ -48,7 +48,7 @@ pub fn render_markdown(src: &str) -> Html {
                 let mut top = spine.pop().unwrap().clone();
 
                 if let Tag::CodeBlock(_) = tag {
-                    let top_children = top.children_mut().unwrap();
+                    let top_children = top.children_mut().unwrap().to_vlist_mut();
                     let vnode = &mut top_children[0].clone();
                     let vtext = &top_children[1].clone();
                     top_children.truncate(0);
@@ -60,10 +60,10 @@ pub fn render_markdown(src: &str) -> Html {
                     top_children.push(vnode.clone());
                 } else if let Tag::Table(aligns) = tag {
                     if let Some(top_children) = top.children_mut() {
-                        for r in top_children.iter_mut() {
+                        for r in top_children.to_vlist_mut().iter_mut() {
                             if let VNode::VTag(ref mut vtag) = r {
                                 if let Some(vtag_children) = vtag.children_mut() {
-                                    for (i, c) in vtag_children.iter_mut().enumerate() {
+                                    for (i, c) in vtag_children.to_vlist_mut().iter_mut().enumerate() {
                                         if let VNode::VTag(ref mut vtag) = c {
                                             match aligns[i] {
                                                 Alignment::None => {}
@@ -79,7 +79,7 @@ pub fn render_markdown(src: &str) -> Html {
                     }
                 } else if let Tag::TableHead = tag {
                     if let Some(top_children) = top.children_mut() {
-                        for c in top_children.iter_mut() {
+                        for c in top_children.to_vlist_mut().iter_mut() {
                             if let VNode::VTag(ref mut vtag) = c {
                                 vtag.add_child(VTag::new("th").into());
                                 vtag.add_attribute("scope", "col");

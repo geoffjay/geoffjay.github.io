@@ -5,7 +5,7 @@ use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::JsFuture;
 use web_sys::{Request, RequestInit, RequestMode, Response};
-use yew::prelude::*;
+use yew::{function_component, html, use_state, use_effect_with, Html};
 
 use crate::utils::markdown::render_markdown;
 
@@ -52,7 +52,7 @@ fn about_markdown() -> Html {
     let markdown = use_state(|| "".to_string());
     {
         let markdown = markdown.clone();
-        use_effect_with_deps(move |_| {
+        use_effect_with((), move |_| {
             wasm_bindgen_futures::spawn_local(async move {
                 match fetch_markdown(MARKDOWN_URL).await {
                     Ok(md) => markdown.set(md),
@@ -60,7 +60,7 @@ fn about_markdown() -> Html {
                 }
             });
             || ()
-        }, ());
+        });
     }
 
     html! {

@@ -1,4 +1,4 @@
-use yew::{classes, function_component, html, use_state_eq, Callback, Children, Properties};
+use yew::{classes, function_component, html, use_state_eq, Callback, Children, Html, Properties};
 use yew_router::prelude::*;
 
 use crate::app::Route;
@@ -67,7 +67,7 @@ fn animation(props: &AnimationProps) -> Html {
 
 #[function_component(Nav)]
 pub fn nav() -> Html {
-    let location = use_location().unwrap();
+    let current_route = use_route().unwrap();
 
     let navbar_active = use_state_eq(|| false);
 
@@ -177,7 +177,7 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Blog),
+                                    active_link_classes(&current_route, &Route::Blog),
                                     link_classes.clone(),
                                 )}
                                 to={Route::Blog}
@@ -188,7 +188,7 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Portfolio),
+                                    active_link_classes(&current_route, &Route::Portfolio),
                                     link_classes.clone(),
                                 )}
                                 to={Route::Portfolio}
@@ -199,7 +199,7 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Resume),
+                                    active_link_classes(&current_route, &Route::Resume),
                                     link_classes.clone(),
                                 )}
                                 to={Route::Resume}
@@ -210,7 +210,7 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::About),
+                                    active_link_classes(&current_route, &Route::About),
                                     link_classes.clone(),
                                 )}
                                 to={Route::About}
@@ -221,7 +221,7 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&location.route::<Route>().unwrap(), &Route::Contact),
+                                    active_link_classes(&current_route, &Route::Contact),
                                     link_classes.clone(),
                                 )}
                                 to={Route::Contact}
