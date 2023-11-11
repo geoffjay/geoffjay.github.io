@@ -41,8 +41,8 @@ run.subcommands.frontend = [
 post.cmd = [
   "export TITLE=$(echo %title | sed -E \"s/[[:blank:]]/_/g\" | tr \"[:upper:]\" \"[:lower:]\")",
   "export POST=$(date +%Y-%m-%d)_$TITLE.md",
-  "touch assets/posts/$POST",
-  "git add assets/posts/$POST",
+  "touch src/features/blog/posts/$POST",
+  "git add src/features/blog/posts/$POST",
 ]
 post.args = [
   "title",

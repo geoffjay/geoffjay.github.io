@@ -5,12 +5,21 @@
  * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
  */
 
+.token {
+  text-shadow: none;
+}
+
+.token.operator {
+  background: none;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
 	background: none;
 	font-family: "Fira Code", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
+  text-shadow: none;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
