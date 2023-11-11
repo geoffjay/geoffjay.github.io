@@ -6,7 +6,6 @@ mod bindings;
 mod components;
 mod features;
 mod pages;
-mod utils;
 
 use app::App;
 
