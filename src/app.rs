@@ -60,23 +60,16 @@ pub fn app() -> Html {
     bindings::highlight();
 
     html! {
-        <>
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-ruby.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
-            <HashRouter>
-                <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
-                    <Nav />
-                    <div class={classes!(main_classes)}>
-                        <main>
-                            <Switch<Route> render={switch} />
-                        </main>
-                        <Footer />
-                    </div>
+        <HashRouter>
+            <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+                <Nav />
+                <div class={classes!(main_classes)}>
+                    <main>
+                        <Switch<Route> render={switch} />
+                    </main>
+                    <Footer />
                 </div>
-            </HashRouter>
-        </>
+            </div>
+        </HashRouter>
     }
 }
