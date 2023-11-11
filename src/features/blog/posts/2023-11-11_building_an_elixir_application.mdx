@@ -1,0 +1,31 @@
+## Building an Elixir Application
+
+Build an application using Elixir and Phoenix...
+
+For now this is just notes, there's a [repo](https://github.com/halfbakedio/nnn) but it's still
+early on.
+
+Currently hosted at https://nnn.fly.dev/.
+
+### Ideas
+
+- white-labeled for custom domain and branding
+- multi-tenancy where each account has its own database
+- custom feature flag service implemented as an app using distributed tasks (see references)
+- supports social login
+- GraphQL API
+- Triplex for account tenancy
+
+### References
+
+- https://hexdocs.pm/elixir/1.16/distributed-tasks.html
+- https://learnyousomeerlang.com/distribunomicon
+- https://hexdocs.pm/phoenix/writing_a_channels_client.html
+- https://fly.io/docs/elixir/advanced-guides/github-actions-elixir-ci-cd/
+- https://elixircasts.io/
+  - useful tutorials
+- https://hexdocs.pm/elixir/1.16/introduction-to-mix.html
+  - shows how to add an app to a project that can run as part of the stack
+- https://sisccr.medium.com/social-login-with-phoenix-1-5-e9ab9c23356e
+- https://medium.com/redsquirrel-tech/create-a-multi-tenant-whitelabel-application-in-elixir-phoenix-part-iii-adding-accounts-6231a14d9c9a
+  - a lot of what I want to do with this application

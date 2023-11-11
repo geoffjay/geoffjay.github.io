@@ -1,10 +1,10 @@
 use web_sys::{console, Element};
 use yew::{prelude::*, virtual_dom::VNode};
 
+// Credit to https://github.com/kcking/implfuture.dev for this code.
+
 #[function_component]
 pub fn HighlightCode(c: &super::ChildProps) -> Html {
-    //  IDEA: try NodeRef and call Prism.highlightElement on it
-    //      but how do we store a ref??
     let code_ref = use_state_eq(|| NodeRef::default());
     let mut code_tag = c.children.iter().next().unwrap().clone();
     match &mut code_tag {

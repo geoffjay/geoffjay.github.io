@@ -2,10 +2,11 @@ use time::macros::date;
 use yew::Html;
 
 mod blog;
+mod post;
 mod posts;
-pub mod post;
 
 pub use blog::Blog;
+pub use post::Post;
 
 use posts::post_1;
 

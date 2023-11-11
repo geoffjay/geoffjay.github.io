@@ -3,7 +3,7 @@ use yew_router::prelude::*;
 
 use crate::bindings;
 use crate::components::{footer::Footer, nav::Nav};
-use crate::features::blog::{Blog, post::Post};
+use crate::features::blog::{Blog, Post};
 use crate::pages::{
     about::About,
     contact::Contact,
