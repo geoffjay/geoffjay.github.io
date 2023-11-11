@@ -1293,6 +1293,7 @@ dependencies = [
 [[package]]
 name = "yew"
 version = "0.21.0"
+source = "git+https://github.com/geoffjay/yew?branch=mdx#a2b154fa9ba3419fbef1c46c9da7c89bc09ca73a"
 dependencies = [
  "console_error_panic_hook",
  "futures",
@@ -1316,6 +1317,7 @@ dependencies = [
 [[package]]
 name = "yew-macro"
 version = "0.21.0"
+source = "git+https://github.com/geoffjay/yew?branch=mdx#a2b154fa9ba3419fbef1c46c9da7c89bc09ca73a"
 dependencies = [
  "boolinator",
  "chumsky",
@@ -1332,6 +1334,7 @@ dependencies = [
 [[package]]
 name = "yew-router"
 version = "0.18.0"
+source = "git+https://github.com/geoffjay/yew?branch=mdx#a2b154fa9ba3419fbef1c46c9da7c89bc09ca73a"
 dependencies = [
  "gloo 0.10.0",
  "js-sys",
@@ -1349,6 +1352,7 @@ dependencies = [
 [[package]]
 name = "yew-router-macro"
 version = "0.18.0"
+source = "git+https://github.com/geoffjay/yew?branch=mdx#a2b154fa9ba3419fbef1c46c9da7c89bc09ca73a"
 dependencies = [
  "proc-macro2",
  "quote",

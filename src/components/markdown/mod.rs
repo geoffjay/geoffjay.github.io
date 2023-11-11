@@ -207,7 +207,7 @@ pub fn MyBlockquote(c: &ChildProps) -> Html {
 #[function_component]
 pub fn MyP(c: &ChildProps) -> Html {
     html! {
-      <p class="text-base/7">
+      <p class="text-base/7 pb-4">
         {c.children.clone()}
       </p>
     }

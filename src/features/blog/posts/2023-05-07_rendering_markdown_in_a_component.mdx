@@ -1,14 +1,17 @@
 ## Rendering Markdown in a Component
 
-I added Markdown rendering to my personal site and maybe I'll document it
-properly here, but for now I need a post with all the markdown tags to be
-converted for testing purposes.
+I added Markdown rendering to this site with the intention of using it for
+blog posts. It was working, but there were issues with how hard it was to
+make changes to parsing, and code blocks were not being rendered properly.
+Then I came across [this post](https://implfuture.dev/blog/rewriting-the-modern-web-in-rust)
+that had a really nice implementation of markdown renderering that handled
+it by adding macros to the `yew-macro` package inside of `yew`. It was easy
+enough to borrow from and what's here is the result of that.
+
+There are still some bugs to iron out, links not rendering without the `[]()`
+syntax, footnotes, and tables lack alignment.
 
 ### Styling Text
-
-- _italic text_ using `_italic text_`
-- **bold text** using `**bold text**`
-- ~~strikethrough text~~ using `~~strikethrough text~~`
 
 | Style                  | Example            | Output                                 |
 | ---------------------- | ------------------ | -------------------------------------- |
@@ -82,6 +85,8 @@ This is some `inline code`.
 
 #### Block
 
+##### Rust
+
 ```rust
 /// Fetches markdown for `url`.
 async fn fetch_markdown(url: &'static str) -> Result<String, FetchError> {
@@ -97,6 +102,39 @@ async fn fetch_markdown(url: &'static str) -> Result<String, FetchError> {
     let text = JsFuture::from(resp.text()?).await?;
 
     Ok(text.as_string().unwrap())
+}
+```
+
+##### Ruby
+
+```ruby
+class Foo::Bar
+  def baz
+    puts "Hello World!"
+  end
+end
+```
+
+##### Go
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello World!")
+}
+```
+
+##### C
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello World!\n");
+    return 0;
 }
 ```
 
