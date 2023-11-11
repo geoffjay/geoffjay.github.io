@@ -3,14 +3,14 @@ use yew_router::prelude::*;
 
 use crate::bindings;
 use crate::components::{footer::Footer, nav::Nav};
-use crate::features::blog::{Blog, Post};
-use crate::pages::{
+use crate::features::{
     about::About,
+    blog::{Blog, Post},
     contact::Contact,
-    home::Home,
     portfolio::Portfolio,
     resume::Resume,
 };
+use crate::pages::home::Home;
 
 #[derive(Clone, Debug, Routable, PartialEq, Eq)]
 pub enum Route {
