@@ -1,5 +1,6 @@
 use std::borrow::Borrow;
 use yew::{function_component, html, Children, Html, Properties};
+use yew_router::hooks::use_location;
 
 pub mod highlight;
 
@@ -53,6 +54,8 @@ const HEADER_LINK_LEN: usize = 20;
 
 #[function_component]
 pub fn MyH1(c: &ChildProps) -> Html {
+    let location = use_location().unwrap();
+    let path = location.path();
     let mut tag = String::new();
 
     for c in c.children.iter() {
@@ -69,7 +72,7 @@ pub fn MyH1(c: &ChildProps) -> Html {
 
     html! {
       <h1 id={tag.clone()} class="text-6xl py-8">
-        <a class="text-inherit" href={format!("#{tag}")}>
+        <a class="text-inherit" href={format!("{path}#{tag}")}>
           {c.children.clone()}
         </a>
       </h1>
@@ -78,6 +81,8 @@ pub fn MyH1(c: &ChildProps) -> Html {
 
 #[function_component]
 pub fn MyH2(c: &ChildProps) -> Html {
+    let location = use_location().unwrap();
+    let path = location.path();
     let mut tag = String::new();
 
     for c in c.children.iter() {
@@ -94,7 +99,7 @@ pub fn MyH2(c: &ChildProps) -> Html {
 
     html! {
       <h2 id={tag.clone()} class="text-5xl py-6">
-        <a class="text-inherit" href={format!("#{tag}")}>
+        <a class="text-inherit" href={format!("{path}#{tag}")}>
           {c.children.clone()}
         </a>
       </h2>
@@ -103,11 +108,13 @@ pub fn MyH2(c: &ChildProps) -> Html {
 
 #[function_component]
 pub fn MyH3(c: &ChildProps) -> Html {
+    let location = use_location().unwrap();
+    let path = location.path();
     let tag = children_to_slug(c.children.iter());
 
     html! {
       <h3 id={tag.clone()} class="text-4xl py-6">
-        <a class="text-inherit" href={format!("#{tag}")}>
+        <a class="text-inherit" href={format!("{path}#{tag}")}>
           {c.children.clone()}
         </a>
       </h3>
@@ -116,11 +123,13 @@ pub fn MyH3(c: &ChildProps) -> Html {
 
 #[function_component]
 pub fn MyH4(c: &ChildProps) -> Html {
+    let location = use_location().unwrap();
+    let path = location.path();
     let tag = children_to_slug(c.children.iter());
 
     html! {
       <h4 id={tag.clone()} class="text-3xl py-4">
-        <a class="text-inherit" href={format!("#{tag}")}>
+        <a class="text-inherit" href={format!("{path}#{tag}")}>
           {c.children.clone()}
         </a>
       </h4>
@@ -129,11 +138,13 @@ pub fn MyH4(c: &ChildProps) -> Html {
 
 #[function_component]
 pub fn MyH5(c: &ChildProps) -> Html {
+    let location = use_location().unwrap();
+    let path = location.path();
     let tag = children_to_slug(c.children.iter());
 
     html! {
       <h5 id={tag.clone()} class="text-2xl py-4">
-        <a class="text-inherit" href={format!("#{tag}")}>
+        <a class="text-inherit" href={format!("{path}#{tag}")}>
           {c.children.clone()}
         </a>
       </h5>
@@ -142,11 +153,13 @@ pub fn MyH5(c: &ChildProps) -> Html {
 
 #[function_component]
 pub fn MyH6(c: &ChildProps) -> Html {
+    let location = use_location().unwrap();
+    let path = location.path();
     let tag = children_to_slug(c.children.iter());
 
     html! {
       <h6 id={tag.clone()} class="text-xl py-4">
-        <a class="text-inherit" href={format!("#{tag}")}>
+        <a class="text-inherit" href={format!("{path}#{tag}")}>
           {c.children.clone()}
         </a>
       </h6>
