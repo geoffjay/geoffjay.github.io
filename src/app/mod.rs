@@ -1,6 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
+mod home;
+use home::Home;
+
 use crate::bindings;
 use crate::components::{footer::Footer, nav::Nav};
 use crate::features::{
@@ -10,7 +13,6 @@ use crate::features::{
     portfolio::Portfolio,
     resume::Resume,
 };
-use crate::pages::home::Home;
 
 #[derive(Clone, Debug, Routable, PartialEq, Eq)]
 pub enum Route {
@@ -38,9 +40,9 @@ fn switch(routes: Route) -> Html {
         Route::Home => html! { <Home /> },
         Route::About => html! { <About /> },
         Route::Blog => html! { <Blog /> },
+        Route::Post { slug } => html! { <Post slug={slug} /> },
         Route::Contact => html! { <Contact /> },
         Route::Portfolio => html! { <Portfolio /> },
-        Route::Post { slug } => html! { <Post slug={slug} /> },
         Route::Resume => html! { <Resume /> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
@@ -64,7 +66,7 @@ pub fn app() -> Html {
 
     html! {
         <HashRouter>
-            <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+            <div class="md:flex flex-col md:flex-row min-h-screen w-full bg-gray-100">
                 <Nav />
                 <div class={classes!(main_classes)}>
                     <main>

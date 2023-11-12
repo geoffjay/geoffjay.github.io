@@ -1,4 +1,4 @@
-use web_sys::{console, Element};
+use web_sys::Element;
 use yew::{prelude::*, virtual_dom::VNode};
 
 // Credit to https://github.com/kcking/implfuture.dev for this code.
