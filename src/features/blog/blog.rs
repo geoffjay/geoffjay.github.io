@@ -14,7 +14,7 @@ pub fn blog() -> Html {
         .map(|(metadata, _)| {
             html! {
               <div class="container mb-64">
-                <div class="text-3xl pb-6">{"Blog"}</div>
+                <div class="text-xl pb-6">{"Blog"}</div>
                 <Link<Route> classes="text-inherit" to={Route::Post { slug: metadata.slug.into() }}>
                   <section class="section bg-gray-100 hover:bg-gray-200 mx-4 border-2 hover:border-red rounded p-4 hover:shadow-lg">
                     <h1 class="text-xl text-gray-700 font-display">

@@ -1,7 +1,8 @@
 [package]
 name = "geoffjay-github-io"
-version = "0.1.0"
 edition = "2021"
+repository = "https://github.com/geoffjay/geoffjay.github.io"
+version = "0.1.0"
 
 [dependencies]
 gloo = "0.8"
