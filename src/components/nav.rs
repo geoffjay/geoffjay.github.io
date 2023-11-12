@@ -1,4 +1,4 @@
-use yew::{classes, function_component, html, use_state_eq, Callback, Children, Html, Properties};
+use yew::{classes, function_component, html, use_effect_with, use_state_eq, Callback, Children, Html, Properties};
 use yew_router::prelude::*;
 
 use crate::app::Route;
@@ -67,7 +67,7 @@ fn animation(props: &AnimationProps) -> Html {
 
 #[function_component(Nav)]
 pub fn nav() -> Html {
-    let current_route = use_route().unwrap();
+    let current_route: Route = use_route().unwrap();
 
     let navbar_active = use_state_eq(|| false);
 
@@ -135,6 +135,14 @@ pub fn nav() -> Html {
         "dark-mode:hover:border-r-4",
         "dark-mode:hover:border-red",
     ];
+
+    use_effect_with(
+        current_route.clone(),
+        move |_| {
+            navbar_active.set(false);
+            || {}
+        },
+    );
 
     html! {
         <div class={classes!(container_classes)}>

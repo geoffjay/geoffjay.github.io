@@ -17,7 +17,7 @@ ignore = [
   "tools/tailwind-yew-builder/",
 ]
 
-[[hooks]]
-stage = "pre_build"
-command = "bonnie"
-command_arguments = ["build-tailwind-dev"]
+# [[hooks]]
+# stage = "pre_build"
+# command = "bonnie"
+# command_arguments = ["build-tailwind-dev"]

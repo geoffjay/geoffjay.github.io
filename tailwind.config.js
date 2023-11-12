@@ -1,16 +1,11 @@
 // const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV === "production",
-    mode: "all",
-    content: [
-      "../src/**/*.rs",
-      "../public/index.html",
-      "./tailwind.css",
-    ]
+  enabled: process.env.NODE_ENV === "production",
+  content: {
+    files: ["src/**/*.rs", "**/index.html"],
   },
-  darkMode: false,
+  darkMode: "class",
   theme: {
     colors: {
       transparent: "transparent",
