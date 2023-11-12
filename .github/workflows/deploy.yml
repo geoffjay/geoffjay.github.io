@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - tailwind
 
   workflow_dispatch:
 
