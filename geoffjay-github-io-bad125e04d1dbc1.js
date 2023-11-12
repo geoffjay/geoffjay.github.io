@@ -602,9 +602,6 @@ function __wbg_get_imports() {
     imports.wbg.__wbg_info_1d035e3d63b89260 = function(arg0, arg1, arg2, arg3) {
         console.info(getObject(arg0), getObject(arg1), getObject(arg2), getObject(arg3));
     };
-    imports.wbg.__wbg_log_7811587c4c6d2844 = function(arg0) {
-        console.log(getObject(arg0));
-    };
     imports.wbg.__wbg_log_00bb83da94eb9ca8 = function(arg0, arg1, arg2, arg3) {
         console.log(getObject(arg0), getObject(arg1), getObject(arg2), getObject(arg3));
     };
@@ -973,7 +970,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('geoffjay-github-io-6c02eb226afb4ef4_bg.wasm', import.meta.url);
+        input = new URL('geoffjay-github-io-bad125e04d1dbc1_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 
