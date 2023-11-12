@@ -1,7 +1,7 @@
 use yew::{include_mdx, Html};
 
-use crate::components::markdown::*;
 use crate::components::markdown::highlight::HighlightCode;
+use crate::components::markdown::*;
 use crate::features::blog::Metadata;
 
 blog_style!();

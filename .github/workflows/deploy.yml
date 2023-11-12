@@ -23,9 +23,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-
       - name: Pre-install
         run: |
           mkdir -p $HOME/.local/bin
@@ -43,29 +40,19 @@ jobs:
       - name: Install trunk
         env:
           TRUNK_LINK: https://github.com/thedodd/trunk/releases/download
-          TRUNK_VERSION: v0.15.0
+          TRUNK_VERSION: v0.17.0
         run: |
           TRUNK_FILE=trunk-x86_64-unknown-linux-gnu
           curl -L "$TRUNK_LINK/$TRUNK_VERSION/$TRUNK_FILE.tar.gz" | tar xz
           mv -f trunk $HOME/.local/bin/trunk
 
-      - name: Install bonnie
-        env:
-          BONNIE_LINK: https://github.com/arctic-hen7/bonnie/releases/download
-          BONNIE_VERSION: v0.3.2
-        run: |
-          BONNIE_FILE=bonnie-linux-amd64
-          curl -L "$BONNIE_LINK/$BONNIE_VERSION/$BONNIE_FILE" -o $BONNIE_FILE
-          chmod +x $BONNIE_FILE
-          mv -f $BONNIE_FILE $HOME/.local/bin/bonnie
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
+      - name: Setup toolchain
+        uses: dtolnay/rust-toolchain@master
         with:
           toolchain: stable
 
       - name: Cache cargo registry
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         continue-on-error: false
         with:
           path: |
@@ -76,7 +63,7 @@ jobs:
             ${{ runner.os }}-cargo-
 
       - name: Save sccache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         continue-on-error: false
         with:
           path: /home/runner/.cache/sccache

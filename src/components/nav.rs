@@ -1,4 +1,7 @@
-use yew::{classes, function_component, html, use_state_eq, Callback, Children, Html, Properties};
+use yew::{
+    classes, function_component, html, use_effect_with, use_state_eq, Callback, Children, Html,
+    Properties,
+};
 use yew_router::prelude::*;
 
 use crate::app::Route;
@@ -6,9 +9,15 @@ use crate::components::avatar::Avatar;
 
 fn active_link_classes(current: &Route, link: &Route) -> Vec<String> {
     if current.clone() == link.clone() {
-        vec!["bg-gray-300".to_string(), "dark-mode:bg-gray-800".to_string()]
+        vec![
+            "bg-gray-300".to_string(),
+            "dark-mode:bg-gray-800".to_string(),
+        ]
     } else {
-        vec!["bg-transparent".to_string(), "dark-mode:bg-transparent".to_string()]
+        vec![
+            "bg-transparent".to_string(),
+            "dark-mode:bg-transparent".to_string(),
+        ]
     }
 }
 
@@ -22,10 +31,7 @@ pub struct AnimationWrapperProps {
 
 #[function_component(AnimationWrapper)]
 fn animation_wrapper(props: &AnimationWrapperProps) -> Html {
-    let AnimationWrapperProps {
-        xyz,
-        children,
-    } = props.clone();
+    let AnimationWrapperProps { xyz, children } = props.clone();
 
     let mut node = html! {
         <div>{ for children.iter() }</div>
@@ -49,10 +55,7 @@ pub struct AnimationProps {
 
 #[function_component(Animation)]
 fn animation(props: &AnimationProps) -> Html {
-    let AnimationProps {
-        xyz,
-        children,
-    } = props.clone();
+    let AnimationProps { xyz, children } = props.clone();
 
     let mut node = html! {
         <div class="xyz-in">{ for children.iter() }</div>
@@ -67,7 +70,7 @@ fn animation(props: &AnimationProps) -> Html {
 
 #[function_component(Nav)]
 pub fn nav() -> Html {
-    let current_route = use_route().unwrap();
+    let current_route: Route = use_route().unwrap();
 
     let navbar_active = use_state_eq(|| false);
 
@@ -135,6 +138,11 @@ pub fn nav() -> Html {
         "dark-mode:hover:border-r-4",
         "dark-mode:hover:border-red",
     ];
+
+    use_effect_with(current_route.clone(), move |_| {
+        navbar_active.set(false);
+        || {}
+    });
 
     html! {
         <div class={classes!(container_classes)}>
