@@ -333,12 +333,12 @@ function __wbg_get_imports() {
         const ret = getObject(arg0);
         return addHeapObject(ret);
     };
+    imports.wbg.__wbg_highlightElement_d4ed89a4c50574b8 = function(arg0) {
+        Prism.highlightElement(takeObject(arg0));
+    };
     imports.wbg.__wbindgen_string_new = function(arg0, arg1) {
         const ret = getStringFromWasm0(arg0, arg1);
         return addHeapObject(ret);
-    };
-    imports.wbg.__wbg_highlightElement_d4ed89a4c50574b8 = function(arg0) {
-        Prism.highlightElement(takeObject(arg0));
     };
     imports.wbg.__wbg_setlistenerid_f2e783343fa0cec1 = function(arg0, arg1) {
         getObject(arg0).__yew_listener_id = arg1 >>> 0;
@@ -920,16 +920,16 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1815 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1003, __wbg_adapter_38);
+    imports.wbg.__wbindgen_closure_wrapper1826 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1011, __wbg_adapter_38);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1918 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1053, __wbg_adapter_41);
+    imports.wbg.__wbindgen_closure_wrapper1929 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1061, __wbg_adapter_41);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1989 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1080, __wbg_adapter_44);
+    imports.wbg.__wbindgen_closure_wrapper2000 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1088, __wbg_adapter_44);
         return addHeapObject(ret);
     };
     imports['./snippets/geoffjay-github-io-400250766c0a9f94/js/prism.js'] = __wbg_star0;
@@ -973,7 +973,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('geoffjay-github-io-806983c557b5f202_bg.wasm', import.meta.url);
+        input = new URL('geoffjay-github-io-6c02eb226afb4ef4_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 
