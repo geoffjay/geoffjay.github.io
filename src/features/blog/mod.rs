@@ -23,7 +23,7 @@ pub const POSTS: &[(Metadata, &dyn Fn(&Metadata) -> Html)] = &[(
         title: "Rendering Markdown in a Component",
         date: date!(2023 - 5 - 7),
         slug: "rendering-markdown-in-a-component",
-        subtitle: "A post demonstrating all supported markdown features",
+        subtitle: "A post demonstrating rendering all supported markdown features in a Yew component using pulldown_cmark",
         published: true,
     },
     &post_1,
