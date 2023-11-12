@@ -55,7 +55,11 @@ pub struct TimelineItemProps {
 
 #[function_component(TimelineItem)]
 pub fn timeline_item(props: &TimelineItemProps) -> Html {
-    let TimelineItemProps { children, title, position } = props.clone();
+    let TimelineItemProps {
+        children,
+        title,
+        position,
+    } = props.clone();
     let item_classes = vec![
         "flex",
         "md:contents",
