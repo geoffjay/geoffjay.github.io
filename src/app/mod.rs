@@ -54,22 +54,24 @@ pub fn app() -> Html {
         "flex",
         "flex-col",
         "flex-0",
+        "grow",
         "p-8",
         "w-full",
         "text-gray-700",
         "bg-gray-100",
         "dark-mode:text-gray-200",
         "dark-mode:bg-gray-700",
+        "justify-between",
     ];
 
     bindings::highlight();
 
     html! {
         <HashRouter>
-            <div class="md:flex flex-col md:flex-row min-h-screen w-full bg-gray-100">
+            <div class="flex flex-col md:flex-row min-h-screen w-full bg-gray-100">
                 <Nav />
                 <div class={classes!(main_classes)}>
-                    <main>
+                    <main class="h-full grow flex flex-col">
                         <Switch<Route> render={switch} />
                     </main>
                     <Footer />

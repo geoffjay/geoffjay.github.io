@@ -102,23 +102,18 @@ pub fn resume() -> Html {
         <div class="container w-full mx-auto">
             <div class="text-xl pb-6">{"Resume"}</div>
             <Timeline>
-                // <!-- left -->
                 <TimelineItem title="Lorem ipsum" position={TimelineItemPosition::Left}>
                     {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quaerat?"}
                 </TimelineItem>
-                // <!-- right -->
                 <TimelineItem title="Lorem ipsum" position={TimelineItemPosition::Right}>
                     {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quaerat?"}
                 </TimelineItem>
-                // <!-- left -->
                 <TimelineItem title="Lorem ipsum" position={TimelineItemPosition::Left}>
                     {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quaerat?"}
                 </TimelineItem>
-                // <!-- left -->
                 <TimelineItem title="Lorem ipsum" position={TimelineItemPosition::Left}>
                     {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quaerat?"}
                 </TimelineItem>
-                // <!-- right -->
                 <TimelineItem title="Lorem ipsum" position={TimelineItemPosition::Right}>
                     {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quaerat?"}
                 </TimelineItem>
