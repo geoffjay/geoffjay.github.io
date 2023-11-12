@@ -14,10 +14,4 @@ ignore = [
   "README.md",
   "LICENSE.md",
   "rustfmt.toml",
-  "tools/tailwind-yew-builder/",
 ]
-
-# [[hooks]]
-# stage = "pre_build"
-# command = "bonnie"
-# command_arguments = ["build-tailwind-dev"]
