@@ -12,21 +12,17 @@ pub fn HighlightCode(c: &super::ChildProps) -> Html {
         _ => {}
     };
 
-    use_effect_with(
-        c.children.clone(),
-        move |_| {
-            console::log_1(&"highlighting...".to_string().into());
-            let element = code_ref.cast::<Element>().unwrap();
-            prism::highlightElement(element.clone());
-            move || {
-                element
-                    .closest(".codecontainer")
-                    .ok()
-                    .flatten()
-                    .map(|e| e.remove());
-            }
-        },
-    );
+    use_effect_with(c.children.clone(), move |_| {
+        let element = code_ref.cast::<Element>().unwrap();
+        prism::highlightElement(element.clone());
+        move || {
+            element
+                .closest(".codecontainer")
+                .ok()
+                .flatten()
+                .map(|e| e.remove());
+        }
+    });
 
     html! {
         <div class="codecontainer">
