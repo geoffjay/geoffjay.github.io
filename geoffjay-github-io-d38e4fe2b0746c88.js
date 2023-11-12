@@ -917,16 +917,16 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1826 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1011, __wbg_adapter_38);
-        return addHeapObject(ret);
-    };
-    imports.wbg.__wbindgen_closure_wrapper1929 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1061, __wbg_adapter_41);
+    imports.wbg.__wbindgen_closure_wrapper1897 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1074, __wbg_adapter_38);
         return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_closure_wrapper2000 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1088, __wbg_adapter_44);
+        const ret = makeMutClosure(arg0, arg1, 1124, __wbg_adapter_41);
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbindgen_closure_wrapper2071 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1151, __wbg_adapter_44);
         return addHeapObject(ret);
     };
     imports['./snippets/geoffjay-github-io-400250766c0a9f94/js/prism.js'] = __wbg_star0;
@@ -970,7 +970,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('geoffjay-github-io-8e54837c1d337457_bg.wasm', import.meta.url);
+        input = new URL('geoffjay-github-io-d38e4fe2b0746c88_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 
