@@ -5,7 +5,7 @@ repository = "https://github.com/geoffjay/geoffjay.github.io"
 version = "0.1.0"
 
 [dependencies]
-gloo = "0.8"
+gloo = "0.10"
 js-sys = "0.3"
 log = "0.4"
 pulldown-cmark = { version = "0.9", default-features = false }
