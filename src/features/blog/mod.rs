@@ -8,7 +8,7 @@ mod posts;
 pub use blog::Blog;
 pub use post::Post;
 
-use posts::post_1;
+use posts::{post_1, post_2};
 
 pub struct Metadata {
     title: &'static str,
@@ -27,4 +27,13 @@ pub const POSTS: &[(Metadata, &dyn Fn(&Metadata) -> Html)] = &[(
         published: true,
     },
     &post_1,
+), (
+    Metadata {
+        title: "Using three.js in Yew",
+        date: date!(2023 - 12 - 15),
+        slug: "using-threejs-in-yew",
+        subtitle: "A post demonstrating using three.js in a Yew component",
+        published: true,
+    },
+    &post_2,
 )];

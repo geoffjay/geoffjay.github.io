@@ -1,8 +1,6 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-mod home;
-use home::Home;
 
 use crate::bindings;
 use crate::components::{footer::Footer, nav::Nav};
@@ -10,7 +8,8 @@ use crate::features::{
     about::About,
     blog::{Blog, Post},
     contact::Contact,
-    portfolio::Portfolio,
+    experiments::Experiments,
+    home::Home,
     resume::Resume,
 };
 
@@ -26,8 +25,8 @@ pub enum Route {
     Post { slug: String },
     #[at("/contact")]
     Contact,
-    #[at("/portfolio")]
-    Portfolio,
+    #[at("/experiments")]
+    Experiments,
     #[at("/resume")]
     Resume,
     #[not_found]
@@ -42,7 +41,7 @@ fn switch(routes: Route) -> Html {
         Route::Blog => html! { <Blog /> },
         Route::Post { slug } => html! { <Post slug={slug} /> },
         Route::Contact => html! { <Contact /> },
-        Route::Portfolio => html! { <Portfolio /> },
+        Route::Experiments => html! { <Experiments /> },
         Route::Resume => html! { <Resume /> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }

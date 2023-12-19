@@ -9,3 +9,7 @@ blog_style!();
 pub fn post_1(_: &Metadata) -> Html {
     include_mdx!("src/features/blog/posts/2023-05-07_rendering_markdown_in_a_component.mdx")
 }
+
+pub fn post_2(_: &Metadata) -> Html {
+    include_mdx!("src/features/blog/posts/2023-12-15_using_threejs_in_yew.mdx")
+}

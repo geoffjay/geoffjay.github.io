@@ -16,3 +16,12 @@ extern "C" {
     #[wasm_bindgen]
     pub fn highlight();
 }
+
+#[wasm_bindgen(module = "/js/scenes/three.js")]
+extern "C" {
+    #[wasm_bindgen]
+    pub fn init();
+
+    #[wasm_bindgen]
+    pub fn render();
+}

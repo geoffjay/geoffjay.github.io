@@ -4,8 +4,8 @@ use yew_router::prelude::Link;
 use crate::app::Route;
 use crate::features::blog::POSTS;
 
-#[function_component(Blog)]
-pub fn blog() -> Html {
+#[function_component(Posts)]
+pub fn posts() -> Html {
     let fmt = time::macros::format_description!("[month repr:short] [day], [year]");
 
     POSTS
@@ -13,8 +13,7 @@ pub fn blog() -> Html {
         .filter(|(md, _)| option_env!("SHOW_UNPUBLISHED").is_some() || md.published)
         .map(|(metadata, _)| {
             html! {
-              <div class="container mb-32">
-                <div class="text-xl pb-6">{"Blog"}</div>
+              <div class="pb-6">
                 <Link<Route> classes="text-inherit" to={Route::Post { slug: metadata.slug.into() }}>
                   <section class="section bg-gray-200 mx-4 border-2 hover:border-red rounded-lg p-4 shadow-md hover:shadow-lg">
                     <h1 class="text-xl text-gray-700 font-display">
@@ -32,4 +31,14 @@ pub fn blog() -> Html {
             }
         })
         .collect()
+}
+
+#[function_component(Blog)]
+pub fn blog() -> Html {
+    html! {
+        <div class="container mb-8">
+            <div class="text-xl pb-6">{"Blog"}</div>
+            <Posts />
+        </div>
+    }
 }
