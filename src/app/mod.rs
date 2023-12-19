@@ -7,12 +7,12 @@ use crate::features::{
     about::About,
     blog::{Blog, Post},
     contact::Contact,
-    experiments::Experiments,
+    experiments::{Experiments, Three},
     home::Home,
     resume::Resume,
 };
 
-#[derive(Clone, Debug, Routable, PartialEq, Eq)]
+#[derive(Clone, Routable, PartialEq)]
 pub enum Route {
     #[at("/")]
     Home,
@@ -25,6 +25,8 @@ pub enum Route {
     #[at("/contact")]
     Contact,
     #[at("/experiments")]
+    ExperimentsIndex,
+    #[at("/experiments/*")]
     Experiments,
     #[at("/resume")]
     Resume,
@@ -33,16 +35,35 @@ pub enum Route {
     NotFound,
 }
 
+#[derive(Clone, Routable, PartialEq)]
+pub enum ExperimentsRoute {
+    #[at("/experiments")]
+    Index,
+    #[at("/experiments/three")]
+    Three,
+    #[not_found]
+    #[at("/experiments/404")]
+    NotFound,
+}
+
 fn switch(routes: Route) -> Html {
     match routes.clone() {
-        Route::Home => html! { <Home /> },
-        Route::About => html! { <About /> },
-        Route::Blog => html! { <Blog /> },
-        Route::Post { slug } => html! { <Post slug={slug} /> },
-        Route::Contact => html! { <Contact /> },
-        Route::Experiments => html! { <Experiments /> },
-        Route::Resume => html! { <Resume /> },
-        Route::NotFound => html! { <h1>{ "404" }</h1> },
+        Route::Home => html! {<Home />},
+        Route::About => html! {<About />},
+        Route::Blog => html! {<Blog />},
+        Route::Post { slug } => html! {<Post slug={slug} />},
+        Route::Contact => html! {<Contact />},
+        Route::ExperimentsIndex | Route::Experiments => html! {<Switch<ExperimentsRoute> render={switch_experiments} />},
+        Route::Resume => html! {<Resume />},
+        Route::NotFound => html! {<h1>{"404"}</h1>},
+    }
+}
+
+fn switch_experiments(route: ExperimentsRoute) -> Html {
+    match route {
+        ExperimentsRoute::Index => html! {<Experiments />},
+        ExperimentsRoute::Three => html! {<Three />},
+        ExperimentsRoute::NotFound => html! {<Redirect<Route> to={Route::NotFound}/>}
     }
 }
 

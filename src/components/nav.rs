@@ -196,10 +196,10 @@ pub fn nav() -> Html {
                         <div class="xyz-nested">
                             <Link<Route>
                                 classes={classes!(
-                                    active_link_classes(&current_route, &Route::Experiments),
+                                    active_link_classes(&current_route, &Route::ExperimentsIndex),
                                     link_classes.clone(),
                                 )}
-                                to={Route::Experiments}
+                                to={Route::ExperimentsIndex}
                             >
                                 { "Experiments" }
                             </Link<Route>>
