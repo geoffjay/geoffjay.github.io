@@ -11,37 +11,31 @@ pub fn experiments() -> Html {
     let then = use_state(|| Date::now());
     let fps = use_state(|| 1000.0 / elapsed);
 
-    let handle_init = use_callback(
-        initialized.setter(),
-        |_input, initialized_setter| {
-            init();
-            initialized_setter.set(true);
-        },
-    );
+    let handle_init = use_callback(initialized.setter(), |_input, initialized_setter| {
+        init();
+        initialized_setter.set(true);
+    });
 
-    use_effect_with(
-        elapsed,
-        move |_| {
-            if *initialized {
-                let fps_interval = 1000.0 / 60.0;
-                let now = Date::now();
-                let dt = now - *then;
+    use_effect_with(elapsed, move |_| {
+        if *initialized {
+            let fps_interval = 1000.0 / 60.0;
+            let now = Date::now();
+            let dt = now - *then;
 
-                // log::info!("elapsed: {}", elapsed);
-                // log::info!("then: {}", *then.clone());
-                // log::info!("now: {}", now);
-                // log::info!("dt: {}", dt);
-                // log::info!("fps_interval: {}", fps_interval);
-                // log::info!("fps: {}", *fps.clone());
+            // log::info!("elapsed: {}", elapsed);
+            // log::info!("then: {}", *then.clone());
+            // log::info!("now: {}", now);
+            // log::info!("dt: {}", dt);
+            // log::info!("fps_interval: {}", fps_interval);
+            // log::info!("fps: {}", *fps.clone());
 
-                if dt as f64 > fps_interval {
-                    render();
-                    then.set(now);
-                    fps.set(1000.0 / dt);
-                }
+            if dt as f64 > fps_interval {
+                render();
+                then.set(now);
+                fps.set(1000.0 / dt);
             }
-        },
-    );
+        }
+    });
 
     html! {
         <div class="container">

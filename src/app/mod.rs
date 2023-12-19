@@ -1,7 +1,6 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-
 use crate::bindings;
 use crate::components::{footer::Footer, nav::Nav};
 use crate::features::{
