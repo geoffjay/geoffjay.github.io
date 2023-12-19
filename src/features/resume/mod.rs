@@ -1,5 +1,4 @@
 use yew::{classes, function_component, html, Children, Html, Properties};
-use yew_tailwind::components::Container;
 
 #[derive(PartialEq, Properties)]
 pub struct TimelineProps {
@@ -104,7 +103,7 @@ pub fn timeline_item(props: &TimelineItemProps) -> Html {
 #[function_component(Resume)]
 pub fn resume() -> Html {
     html! {
-        <Container classes={classes!("w-full", "mx-auto")}>
+        <div class="container w-full mx-auto">
             <div class="text-xl pb-6">{"Resume"}</div>
             <Timeline>
                 <TimelineItem title="Lorem ipsum" position={TimelineItemPosition::Left}>
@@ -123,6 +122,6 @@ pub fn resume() -> Html {
                     {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quaerat?"}
                 </TimelineItem>
             </Timeline>
-        </Container>
+        </div>
     }
 }

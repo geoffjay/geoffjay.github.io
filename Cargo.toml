@@ -16,9 +16,6 @@ wasm-logger = "0.2"
 yew = { version = "0.21.0", features = ["csr"] }
 yew-hooks = "0.3"
 yew-router = "0.18"
-yew-tailwind = { path = "../yew-tailwind/lib" }
-# yew-tailwind = "0.2"
-# yew-three = { path = "../yew-three" }
 
 [dependencies.web-sys]
 version = "0.3"
