@@ -1,5 +1,7 @@
 use wasm_bindgen::prelude::*;
 
+pub mod spline_editor;
+
 #[wasm_bindgen]
 extern "C" {
     // this should be in js-sys but is not. see https://github.com/rustwasm/wasm-bindgen/issues/2865

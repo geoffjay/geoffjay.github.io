@@ -7,7 +7,7 @@ use crate::features::{
     about::About,
     blog::{Blog, Post},
     contact::Contact,
-    experiments::{Experiments, Three},
+    experiments::{Experiments, Three, SplineEditor},
     home::Home,
     resume::Resume,
 };
@@ -41,6 +41,8 @@ pub enum ExperimentsRoute {
     Index,
     #[at("/experiments/three")]
     Three,
+    #[at("/experiments/spline-editor")]
+    SplineEditor,
     #[not_found]
     #[at("/experiments/404")]
     NotFound,
@@ -53,17 +55,24 @@ fn switch(routes: Route) -> Html {
         Route::Blog => html! {<Blog />},
         Route::Post { slug } => html! {<Post slug={slug} />},
         Route::Contact => html! {<Contact />},
-        Route::ExperimentsIndex | Route::Experiments => html! {<Switch<ExperimentsRoute> render={switch_experiments} />},
+        Route::ExperimentsIndex | Route::Experiments => {
+            html! {<Switch<ExperimentsRoute> render={switch_experiments} />}
+        }
         Route::Resume => html! {<Resume />},
         Route::NotFound => html! {<h1>{"404"}</h1>},
     }
 }
 
+/// Experiment route switch.
+///
+/// Could probably do this with an :id param and single ExperimentShow route
+/// and corresponding page that handles the value.
 fn switch_experiments(route: ExperimentsRoute) -> Html {
     match route {
         ExperimentsRoute::Index => html! {<Experiments />},
         ExperimentsRoute::Three => html! {<Three />},
-        ExperimentsRoute::NotFound => html! {<Redirect<Route> to={Route::NotFound}/>}
+        ExperimentsRoute::SplineEditor => html! {<SplineEditor />},
+        ExperimentsRoute::NotFound => html! {<Redirect<Route> to={Route::NotFound}/>},
     }
 }
 
