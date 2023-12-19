@@ -5,7 +5,7 @@ use crate::components::terminal::Terminal;
 #[function_component(Home)]
 pub fn home() -> Html {
     html! {
-        <div class="container grow flex flex-col h-full">
+        <div class="grow flex flex-col h-full">
             <div class="grow mx-auto flex items-stretch">
                 <div class="self-center max-w-[1024px]">
                     <Terminal command="cat README">
