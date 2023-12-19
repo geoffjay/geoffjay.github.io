@@ -1,21 +1,25 @@
 use yew::{function_component, html, Html};
 
-// use crate::components::terminal::Terminal;
+use crate::components::terminal::Terminal;
 
 #[function_component(Home)]
 pub fn home() -> Html {
     html! {
         <div class="container grow flex flex-col h-full">
             <div class="grow mx-auto flex items-stretch">
-                <p class="text-xl text-center self-center max-w-[512px]">
-                    {r#"
-                        👋 Hello, I'm Geoff! I like making things with rust, go, c and sometimes python and ruby.
-                        I've dabbled in home automation, image processing, and many other things. For a long
-                        time I built measurement and control systems on everything from 8-bit microcontrollers
-                        to full scale distributed control systems interfacing with PLCs using a variety of
-                        protocols and technologies. Now I work on web applications as a full-stack developer.
-                    "#}
-                </p>
+                <div class="self-center max-w-[1024px]">
+                    <Terminal command="cat README">
+                        <p class="text-md text-gray-300 py-2">
+                            {r#"
+                                👋 Hello, I'm Geoff! I like making things with rust, go, c and sometimes python and ruby.
+                                I've dabbled in home automation, image processing, and many other things. For a long
+                                time I built measurement and control systems on everything from 8-bit microcontrollers
+                                to full scale distributed control systems interfacing with PLCs using a variety of
+                                protocols and technologies. Now I work on web applications as a full-stack developer.
+                            "#}
+                        </p>
+                    </Terminal>
+                </div>
             </div>
             <div class="container flex-none mx-auto">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-center">
