@@ -7,11 +7,11 @@ pub fn home() -> Html {
     html! {
         <div class="container grow flex flex-col h-full">
             <div class="grow mx-auto flex items-stretch">
-                <p class="text-xl self-center max-w-[512px]">
+                <p class="text-xl text-center self-center max-w-[512px]">
                     {r#"
                         👋 Hello, I'm Geoff! I like making things with rust, go, c and sometimes python and ruby.
                         I've dabbled in home automation, image processing, and many other things. For a long
-                        time I built measurement and control systems on everything from an 8-bit microcontroller
+                        time I built measurement and control systems on everything from 8-bit microcontrollers
                         to full scale distributed control systems interfacing with PLCs using a variety of
                         protocols and technologies. Now I work on web applications as a full-stack developer.
                     "#}
