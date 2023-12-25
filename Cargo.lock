@@ -257,7 +257,7 @@ dependencies = [
 name = "geoffjay-github-io"
 version = "0.1.0"
 dependencies = [
- "gloo 0.8.1",
+ "gloo 0.10.0",
  "js-sys",
  "log",
  "pulldown-cmark",
